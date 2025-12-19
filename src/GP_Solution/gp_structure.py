@@ -33,12 +33,12 @@ def routing_rule_terminal(opt, **kwargs):
     
     # RT4: demand của request càng lớn càng được ưu tiên - w=0.05
     elif opt == 4:
-        sum_demand = pro.sum_of_request_demand()
+        sum_demand = pro.sum_of_req_demand()
         if sum_demand == 0.0:
             return 0.0
         return req.demand / sum_demand
     
-    # RT5: ưu tiên DRONE (thường nân với RT3 đế nhận việc gần) - w=0.1
+    # RT5: ưu tiên DRONE (thường nhân với RT3 đế nhận việc gần) - w=0.1
     elif opt == 5:
         return 1 if veh.type == 'DRONE' else 0.0
 
@@ -54,7 +54,7 @@ def sequencing_rule_terminal(opt, **kwargs):
     if opt == 0:
         return veh.moving_time_to(req.location) / pro.depot_time_window[1]
     
-    # ST1: càng chờ lâu thì càng ưu tiên - w=0.05
+    # ST1: càng xuất hiện sớm (so với hiện tại) thì càng ưu tiên - w=0.05
     elif opt == 1:
         # return -(curr_time - req.release_time) / pro.depot_time_window[1]
         # current time luôn lớn hơn release time vì đơn hàng phải xuất hiện trước khi được thêm vào hàng đọi của xe 
@@ -66,7 +66,8 @@ def sequencing_rule_terminal(opt, **kwargs):
         time_until_close = req.time_window[1] - veh.busy_until
         moving_time = veh.moving_time_to(req.location)
         if moving_time > time_until_close or time_until_close <= 0.001:
-            return float('inf')
+            # return float('inf')
+            return 1e9
         # if time_until_close <= 0.001:
         #     return 1.0
         return moving_time/time_until_close
@@ -78,7 +79,7 @@ def sequencing_rule_terminal(opt, **kwargs):
             return 0.0
         return 1.0 - req.demand / sum_demand
     
-    # ST4: càng trễ càng được ưu tiên - w=0.05
+    # ST4: càng chờ lâu được ưu tiên - w=0.05
     elif opt == 4:
         return 1.0 - (curr_time - req.time_window[0]) / pro.depot_time_window[1]
     
@@ -94,7 +95,7 @@ def protected_div(a,b):
     return a/b if b!=0 else 1.0
 
 
-# each gp tree is represented as a node which may has a left node and/or right node
+# each gp tree is represented as a node which may have a left node and/or right node
 class NodeGP:
     def __init__(self, op=None, left=None, right=None, terminal=None, which='R'):
         self.op = op
@@ -129,9 +130,9 @@ class NodeGP:
         if self.is_terminal():
             typ, opt = self.terminal
             if typ == 'RT':
-                return routing_rule_terminal(opt, veh, pro, req)
+                return routing_rule_terminal(opt, veh=veh, pro=pro, req=req)
             elif typ == 'ST':
-                return sequencing_rule_terminal(opt, veh, pro, req, curr_time)
+                return sequencing_rule_terminal(opt, veh=veh, pro=pro, req=req, curr_time=curr_time)
         
         left = self.left.evaluate(veh, pro, req, curr_time)
         right = self.right.evaluate(veh, pro, req, curr_time)
@@ -173,11 +174,11 @@ class Individual:
     def to_string(self):
         print(f"R: {self.r_tree.to_string()} | S: {self.s_tree.to_string()}")
     
-    def evaluate(self, veh, pro, req, curr_time=0.0):
-        r_value = self.r_tree.evaluate(veh, pro, req, curr_time)
-        s_value = self.s_tree.evaluate(veh, pro, req, curr_time)
-        self.fitness = r_value, s_value
-        return self.fitness
+    # def evaluate(self, veh, pro, req, curr_time=0.0):
+    #     r_value = self.r_tree.evaluate(veh, pro, req, curr_time)
+    #     s_value = self.s_tree.evaluate(veh, pro, req, curr_time)
+    #     self.fitness = r_value, s_value
+    #     return self.fitness
     
     
     

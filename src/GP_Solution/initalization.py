@@ -1,5 +1,5 @@
 import random
-from gp_structure import NodeGP, Individual
+from .gp_structure import NodeGP, Individual
 
 FUNC_SET = ['add', 'sub', 'mul', 'div', 'min', 'max']
 TERMINAL_ROUTING = [('RT', i) for i in range(6)]
@@ -64,8 +64,7 @@ def weighted_terminal(which='R'):
     if which=='R':
         opt = random.choices(range(6), weights=ROUTING_WEIGHTS, k=1)[0]
         return ('RT', opt)
-    else:
-        # opt = random.choice(range(6), weights=SEQ_WEIGHTS, k=1) 
+    else: 
         opt = random.choices(range(6), weights=SEQ_WEIGHTS, k=1)[0]
         return ('ST', opt)         
 
@@ -91,7 +90,7 @@ def create_greedy_pop(pop_size, max_depth=5):
         ("(add RT1 RT3)", "ST2"),
         # 4. RT3 gần nhất trước, RT5 ưu tiên DRONE (nhân với R3 là ưu tiên DRONE gần nhất) + ST0 gần nhất trước
         ("(add RT3 (mul RT3 RT5))", "ST0"),
-        # 5. RT0 càng ít việc càng nên nhận thêm, RT3 gần nhất trước + ST0 gần nhất trước
+        # 5. RT0 càng ít việc càng nên nhận thêm, RT3 gần nhất trước + ST0 gần nhất trước, ST2 ưu tiên gấp
         ("(add RT0 RT3)", "(min ST0 ST2)"),
         # 6. RT1 hàng đợi còn trống lượng demand nhiều, RT2 gần trung tâm hàng đợi + ST0 gần nhất trước, ST2 ưu tiên gấp
         ("(add RT1 RT2)", "(min ST0 ST2)"),
