@@ -174,11 +174,5 @@ class Individual:
     def to_string(self):
         print(f"R: {self.r_tree.to_string()} | S: {self.s_tree.to_string()}")
     
-    # def evaluate(self, veh, pro, req, curr_time=0.0):
-    #     r_value = self.r_tree.evaluate(veh, pro, req, curr_time)
-    #     s_value = self.s_tree.evaluate(veh, pro, req, curr_time)
-    #     self.fitness = r_value, s_value
-    #     return self.fitness
-    
     
     

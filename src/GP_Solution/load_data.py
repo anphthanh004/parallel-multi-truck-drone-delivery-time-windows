@@ -12,15 +12,6 @@ def load_data(file_path):
     depot_time_window_end = data['close']
     pro = Problem(depot_time_window_end)
     for idx, r in enumerate(requests):
-        # r = Request(
-        #         idx+1,   # id
-        #         (requests[idx][0], requests[idx][1]), # location
-        #         requests[idx][2], # demand
-        #         requests[idx][3], # able_drone
-        #         requests[idx][4], # release time
-        #         requests[idx][5], # e - ealiest time - open time
-        #         requests[idx][6], # l - latest time - close time
-        #     )
         rq = Request(
                 idx+1,   # id
                 (r[0], r[1]), # location

@@ -1,5 +1,6 @@
 from collections import defaultdict
 import random
+import math
 
 from .initalization import create_greedy_pop
 from .simulation import simulate_policy
@@ -114,6 +115,9 @@ def nsga2_sv_selection(combined_pop, pop_size):
 # Genetic Programming Hyper Heuristic
 # ---------------------------------------
 def run_gphh_evolution(problem, **kwargs):
+    seed = kwargs.get('seed', None)
+    if seed is not None:
+        random.seed(seed)
     pop_size = kwargs.get('pop_size', 50)
     c_rate = kwargs.get('c_rate', 0.8)
     m_rate = kwargs.get('m_rate', 0.2)
@@ -190,8 +194,46 @@ def run_gphh_evolution(problem, **kwargs):
     fronts = apply_fast_non_dominated_sorting(current_pop)
     first_front = fronts[0]
     
+    best_f1 = min(first_front, key=lambda x: x.f1).f1
+    best_f2 = min(first_front, key=lambda x: x.f2).f2
+    
+    # return current_pop, first_front, stats_history
+    
+    # --- LOGIC TÌM CÁ THỂ TỐT NHẤT VÀ IN ROUTE ---
+    best_ind = None
+    min_dist = float('inf')
+
+    for ind in first_front:
+        dist = math.sqrt((best_f1- ind.f1)**2 + (best_f2 - ind.f2)**2)
+        if dist < min_dist:
+            min_dist = dist
+            best_ind = ind
+
+    if best_ind:
+        # Chạy lại mô phỏng một lần cuối cho cá thể tốt nhất để lấy dữ liệu route
+        final_results = simulate_policy(best_ind, problem)
+        sim_pro = final_results['simulated_problem']
+
+        print("\n" + "="*50)
+        print("LOG LỘ TRÌNH CÁ THỂ TỐT NHẤT (BEST DISTANCE TO IDEAL)")
+        print(f"Khoảng cách tới điểm lý tưởng: {min_dist:.4f}")
+        print(f"Served Ratio (f1): {best_ind.f1:.2%}")
+        print(f"Makespan Score (f2): {best_ind.f2:.4f}")
+        print("-" * 50)
+
+        for v in sim_pro.vehicles:
+            print(f"Vehicle {v.id} [{v.type}]:")
+            if not v.routes or (len(v.routes) == 1 and not v.routes[0]):
+                print("  - Không thực hiện nhiệm vụ nào.")
+            else:
+                for i, trip in enumerate(v.routes):
+                    route_str = " -> ".join(map(str, trip))
+                    print(f"  Chuyến {i+1}: Depot -> {route_str} -> Depot")
+            print(f"  Thời gian hoàn thành: {v.busy_until:.2f}")
+            print("-" * 30)
+        print("="*50 + "\n")
+
     return current_pop, first_front, stats_history
-        
         
                 
     
