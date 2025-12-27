@@ -204,7 +204,7 @@ def run_gphh_evolution(problem, **kwargs):
     min_dist = float('inf')
 
     for ind in first_front:
-        dist = math.sqrt((best_f1- ind.f1)**2 + (best_f2 - ind.f2)**2)
+        dist = math.sqrt(((best_f1- ind.f1)/best_f1)**2 + ((best_f2 - ind.f2)/best_f2)**2)
         if dist < min_dist:
             min_dist = dist
             best_ind = ind

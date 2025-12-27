@@ -159,7 +159,7 @@ def _dispatch_vehicle(veh, ind, pro, start_time, event_queue):
 
 
 def _execute_failed_return_sequence(veh, urgent_req, ready_time, depot_close, event_queue):
-    """Xử lý khi một đơn hàng chắc chắn vi phạm l_w: đi trả hàng và về kho."""
+    """Xử lý khi một đơn hàng chắc chắn vi phạm l_w"""
     travel_to_cust = veh.moving_time_to(urgent_req.location)
     arrival_at_cust = ready_time + travel_to_cust
     
@@ -191,7 +191,8 @@ def _execute_pickup(veh, candidates, ready_time, event_queue):
     if veh.type == "DRONE":
         veh.remaining_range -= (veh.distance_to(next_req.location) / veh.velocity)
         
-    if veh.current_location == (0, 0): veh.routes.append([])
+    if veh.current_location == (0, 0): 
+        veh.routes.append([])
     veh.routes[-1].append(next_req.id)
     
     veh.current_location = next_req.location
