@@ -1,14 +1,17 @@
+from __future__ import annotations
 import random
 import copy
-
+from typing import Any, Literal, Optional
+from .problem_structures import Vehicle, Problem, Request
 # ---------------------
 # GP terminal node
 # ---------------------
-def routing_rule_terminal(opt, **kwargs):
-    veh = kwargs['veh']
-    pro = kwargs['pro']
-    req = kwargs['req']
-    
+def routing_rule_terminal(
+        opt: int, 
+        veh: Vehicle, 
+        pro: Problem, 
+        req: Request
+    ) -> float:
     # RT0 càng nhận ít việc càng nên nhận thêm - w=0.05
     if opt == 0:
         total = len(pro.requests)
@@ -43,12 +46,13 @@ def routing_rule_terminal(opt, **kwargs):
         return 1 if veh.type == 'DRONE' else 0.0
 
 
-def sequencing_rule_terminal(opt, **kwargs):
-    veh = kwargs['veh']
-    pro = kwargs['pro']
-    req = kwargs['req']
-    
-    curr_time = kwargs.get('curr_time', 0.0)
+def sequencing_rule_terminal(
+        opt: int, 
+        veh: Vehicle, 
+        pro: Problem, 
+        req: Request,
+        curr_time: float = 0.0
+    ) -> float:
     
     # ST0: thời gian di chuyển càng ngắn thì càng ngắn thì càng được ưu tiên - w=0.4
     if opt == 0:
@@ -91,20 +95,27 @@ def sequencing_rule_terminal(opt, **kwargs):
 # CONSTRUCT GP TREE
 # ------------------------------
 
-def protected_div(a,b):
+def protected_div(a: float, b: float) -> float:
     return a/b if b!=0 else 1.0
 
 
 # each gp tree is represented as a node which may have a left node and/or right node
 class NodeGP:
-    def __init__(self, op=None, left=None, right=None, terminal=None, which='R'):
+    def __init__(
+        self, 
+        op: str = None, 
+        left: Optional[NodeGP] = None, 
+        right: Optional[NodeGP] = None, 
+        terminal: tuple[str, int] = None, 
+        which: Literal['S', 'R'] = 'R'
+    ) -> None:
         self.op = op
         self.left = left
         self.right = right
         self.terminal = terminal
         self.which = which
     
-    def copy(self):
+    def copy(self) -> NodeGP:
         return NodeGP(
             op=self.op,
             left=self.left.copy() if self.left else None,
@@ -113,20 +124,26 @@ class NodeGP:
             which=self.which
         )
     
-    def is_terminal(self):
+    def is_terminal(self) -> bool:
         return (self.terminal is not None)
     
-    def size(self):
+    def size(self) -> int:
         if self.is_terminal():
           return 1
         return 1 + (self.left.size() if self.left else 0) + (self.right.size() if self.right else 0)
     
-    def depth(self):
+    def depth(self) -> int:
         if self.is_terminal():
             return 1
         return 1 + max(self.left.depth() if self.left else 0, self.right.depth() if self.right else 0)
     
-    def evaluate(self, veh, pro, req, curr_time=0.0):
+    def evaluate(
+        self, 
+        veh: Vehicle, 
+        pro: Problem, 
+        req: Request, 
+        curr_time: float = 0.0
+    ) -> float:
         if self.is_terminal():
             typ, opt = self.terminal
             if typ == 'RT':
@@ -150,28 +167,31 @@ class NodeGP:
         elif self.op == 'max':
             return max(left, right)
         
-    def to_string(self):
+    def to_string(self) -> str:
         if self.is_terminal():
             typ, opt = self.terminal
             return f"{typ}{opt}"
         return f"({self.op} {self.left.to_string()} {self.right.to_string()})"
 
 
-# 
 class Individual:
-    def __init__(self, r_tree:NodeGP, s_tree:NodeGP):
+    def __init__(
+        self, 
+        r_tree: NodeGP, 
+        s_tree: NodeGP
+    ) -> None:
         self.r_tree = r_tree
         self.s_tree = s_tree
         self.fitness = None
         self.f1 = None
         self.f2 = None
         
-    def copy(self):
+    def copy(self) -> Individual:
         r_tree_dc = self.r_tree.copy()
         s_tree_dc = self.s_tree.copy()
         return Individual(r_tree_dc, s_tree_dc)
     
-    def to_string(self):
+    def to_string(self) -> str:
         print(f"R: {self.r_tree.to_string()} | S: {self.s_tree.to_string()}")
     
     

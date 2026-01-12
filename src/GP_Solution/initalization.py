@@ -1,5 +1,12 @@
 import random
 from .gp_structure import NodeGP, Individual
+from typing import Any, Literal, Optional
+from .problem_structures import Vehicle, Problem, Request
+from .gp_structure import NodeGP, Individual
+
+# 
+type Terminal = tuple[Literal['ST', 'RT'], Literal[0, 1, 2, 3, 4, 5]]
+#
 
 FUNC_SET = ['add', 'sub', 'mul', 'div', 'min', 'max']
 TERMINAL_ROUTING = [('RT', i) for i in range(6)]
@@ -7,7 +14,7 @@ TERMINAL_SEQUENCING = [('ST', i) for i in range(6)]
 ROUTING_WEIGHTS = [0.05, 0.15, 0.15, 0.50, 0.05, 0.10]
 SEQ_WEIGHTS = [0.40, 0.05, 0.40, 0.05, 0.05, 0.05]
 
-def build_tree_from_string(s, which='R'):
+def build_tree_from_string(s: str, which: Literal['S', 'R'] = 'R') -> NodeGP:
     s = s.strip()
     # Terminal 
     if s.startswith('RT') and which == 'R':
@@ -46,12 +53,16 @@ def build_tree_from_string(s, which='R'):
     raise ValueError(f"Cannot parse: {s}")
 
 
-def random_terminal(which='R'):
+def random_terminal(which: Literal['S', 'R'] = 'R') -> Terminal:
     if which == 'R':
         return ('RT', random.randint(0,5))
     return ('ST', random.randint(0,5))
 
-def make_random_tree(max_depth=5, grow=True, which='R'):
+def make_random_tree(
+        max_depth: int = 5, 
+        grow: bool = True, 
+        which: Literal['S', 'R'] = 'R'
+    ) -> NodeGP:
     if max_depth == 1 or (grow and random.random() < 0.4):
         return NodeGP(terminal=random_terminal(which), which=which)
     
@@ -60,7 +71,7 @@ def make_random_tree(max_depth=5, grow=True, which='R'):
     right = make_random_tree(max_depth-1, grow, which)
     return NodeGP(op=op, left=left, right=right, which=which)
 
-def weighted_terminal(which='R'):
+def weighted_terminal(which: Literal['S', 'R'] = 'R') -> Terminal:
     if which=='R':
         opt = random.choices(range(6), weights=ROUTING_WEIGHTS, k=1)[0]
         return ('RT', opt)
@@ -68,7 +79,11 @@ def weighted_terminal(which='R'):
         opt = random.choices(range(6), weights=SEQ_WEIGHTS, k=1)[0]
         return ('ST', opt)         
 
-def make_weighted_random_tree(max_depth, grow=True, which='R'):
+def make_weighted_random_tree(
+        max_depth: int, 
+        grow: bool = True, 
+        which: Literal['S', 'R'] = 'R'
+    ) -> NodeGP:
     if max_depth == 1 or (grow and random.random() < 0.4):
         return NodeGP(terminal=weighted_terminal(which), which=which)
     op = random.choice(FUNC_SET)
@@ -78,7 +93,10 @@ def make_weighted_random_tree(max_depth, grow=True, which='R'):
 
 
 
-def create_greedy_pop(pop_size, max_depth=5):
+def create_greedy_pop(
+        pop_size: int, 
+        max_depth: int = 5
+    ) -> list[Individual]:
     pop = []
     # 1. hand-crafted strong individuals
     strong_individuals = [

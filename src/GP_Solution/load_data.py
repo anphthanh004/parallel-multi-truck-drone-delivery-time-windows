@@ -3,7 +3,7 @@ import json
 # from problem_structures import Problem, Request, Drone, Truck
 from .problem_structures import Problem, Request, Drone, Truck
 # problem_structures.py
-def load_data(file_path):
+def load_data(file_path: str) -> Problem:
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"No such file at {file_path}")
     with open(file_path, 'r') as file:

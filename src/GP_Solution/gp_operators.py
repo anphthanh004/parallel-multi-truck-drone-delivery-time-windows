@@ -1,17 +1,24 @@
+import random
+from typing import Literal, Optional
 from .gp_structure import NodeGP
 from .initalization import make_random_tree
-import random
+from .gp_structure import NodeGP, Individual
 
 # ----------------------------------
 # Helper functions cho thao tác cây
 # ----------------------------------
 
-def count_nodes(node):
+def count_nodes(node: NodeGP) -> int:
     if node is None: return 0
     return 1 + count_nodes(node.left) + count_nodes(node.right)
 
-def get_node_at_index(node, target_idx, current_idx=0):
+def get_node_at_index(
+        node: NodeGP, 
+        target_idx: int, 
+        current_idx: int = 0
+    ) -> tuple[NodeGP, int]:
     """Trả về node tại chỉ số target index (duyệt theo pre-order) và index tiếp theo"""
+    
     if current_idx == target_idx:
         return node, current_idx + 1
     
@@ -28,8 +35,14 @@ def get_node_at_index(node, target_idx, current_idx=0):
     
     return None, current_idx
 
-def replace_node_at_index(root, target_idx, new_subtree, current_idx=0):
+def replace_node_at_index(
+        root: NodeGP, 
+        target_idx: int, 
+        new_subtree: NodeGP, 
+        current_idx: int = 0
+    ) -> tuple[NodeGP, int]:
     """Tạo một bản sao của cây với node tại target_idx được thay thế"""
+    
     if current_idx == target_idx:
         return new_subtree.copy(), current_idx + 1
     
@@ -62,8 +75,13 @@ def replace_node_at_index(root, target_idx, new_subtree, current_idx=0):
 # Genetic Operators
 # -----------------------
 
-def perform_crossover(parent1, parent2, max_depth=6):
+def perform_crossover(
+        parent1: Individual, 
+        parent2: Individual, 
+        max_depth: int = 6
+    ) -> tuple[Individual, Individual]:
     """Lai ghép giữa hai cá thể"""
+    
     child1 = parent1.copy()
     child2 = parent2.copy()
     
@@ -105,8 +123,12 @@ def perform_crossover(parent1, parent2, max_depth=6):
     return child1, child2
 
 
-def apply_mutation(indi, max_depth=6):
+def apply_mutation(
+        indi: Individual, 
+        max_depth: int = 6
+    ) -> Individual:
     """Đột biến subtree có kiểm soát độ sâu"""
+    
     new_indi = indi.copy()
     
     if random.random() < 0.5:

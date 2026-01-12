@@ -1,14 +1,16 @@
-from .gp_structure import Individual
-from .problem_structures import Problem, Vehicle, Drone, Truck
 import copy
 import heapq
 import math
+
+from typing import Any, Literal, Optional
+from .problem_structures import Vehicle, Problem, Request
+from .gp_structure import NodeGP, Individual
 
 # -------------------------
 # Giả lập phân bổ sự kiện
 # -------------------------
 
-def simulate_policy(indi: Individual, pro: Problem):
+def simulate_policy(indi: Individual, pro: Problem) -> dict:
     local_pro = copy.deepcopy(pro)
     close_time = local_pro.depot_time_window[1]
 
@@ -101,7 +103,13 @@ def simulate_policy(indi: Individual, pro: Problem):
         "simulated_problem": local_pro
     }
 
-def _dispatch_vehicle(veh, ind, pro, start_time, event_queue):
+def _dispatch_vehicle(
+        veh: Vehicle, 
+        ind: Individual, 
+        pro: Problem, 
+        start_time: float, 
+        event_queue: list[tuple[float, str, Optional[int]]]
+    ) -> None:
     veh.req_queue = [rq for rq in veh.req_queue if (not rq.is_picked_up) and (not rq.is_served)]
     ready_time = max(start_time, veh.busy_until)
     depot_close = pro.depot_time_window[1]
@@ -158,8 +166,15 @@ def _dispatch_vehicle(veh, ind, pro, start_time, event_queue):
         _process_final_return(veh, ready_time, depot_close, event_queue)
 
 
-def _execute_failed_return_sequence(veh, urgent_req, ready_time, depot_close, event_queue):
+def _execute_failed_return_sequence(
+        veh: Vehicle, 
+        urgent_req: Request, 
+        ready_time: float, 
+        depot_close: float, 
+        event_queue: list[tuple[float, str, Optional[int]]]
+    ) -> None:
     """Xử lý khi một đơn hàng chắc chắn vi phạm l_w"""
+    
     travel_to_cust = veh.moving_time_to(urgent_req.location)
     arrival_at_cust = ready_time + travel_to_cust
     
@@ -179,7 +194,12 @@ def _execute_failed_return_sequence(veh, urgent_req, ready_time, depot_close, ev
     # _process_final_return(veh, veh.busy_until, depot_close, event_queue)
 
 
-def _execute_pickup(veh, candidates, ready_time, event_queue):
+def _execute_pickup(
+        veh: Vehicle, 
+        candidates: Vehicle, 
+        ready_time: float, 
+        event_queue: list[tuple[float, str, Optional[int]]]
+    ) -> None:
     """Thực hiện hành động lấy hàng cho ứng viên tốt nhất."""
     _, next_req, travel_time, service_start = min(candidates, key=lambda x: x[0])
     
@@ -201,7 +221,12 @@ def _execute_pickup(veh, candidates, ready_time, event_queue):
     heapq.heappush(event_queue, (veh.busy_until, "VEH_FREE", veh.id))
 
 
-def _process_final_return(veh, ready_time, depot_close, event_queue):
+def _process_final_return(
+        veh: Vehicle, 
+        ready_time: float, 
+        depot_close: float, 
+        event_queue: list[tuple[float, str, Optional[int]]]
+    ) -> None:
     """Quay về depot và cập nhật trạng thái phục vụ cuối cùng của các đơn hàng."""
     arrival_at_depot = ready_time + veh.moving_time(veh.current_location, (0, 0))
     

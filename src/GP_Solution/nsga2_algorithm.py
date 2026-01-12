@@ -2,11 +2,15 @@ from collections import defaultdict
 import random
 import math
 
+from typing import Any, Literal
+from .problem_structures import Vehicle, Problem, Request
+from .gp_structure import NodeGP, Individual
+
 from .initalization import create_greedy_pop
 from .simulation import simulate_policy
 from .gp_operators import apply_mutation, perform_crossover
 
-def dominate(ind1, ind2):
+def dominate(ind1: Individual, ind2: Individual) -> bool:
     f1_a, f2_a = ind1.fitness
     f1_b, f2_b = ind2.fitness
     
@@ -15,7 +19,7 @@ def dominate(ind1, ind2):
         return True
     return False
 
-def apply_fast_non_dominated_sorting(pop):
+def apply_fast_non_dominated_sorting(pop: list[Individual]) -> list[list[Individual]]:
     fronts = [[]]
     domination_count = defaultdict(int) # chỉ lưu số lượng các indi trội hơn nó
     dominated_solutions = defaultdict(list) # lưu list các indi bị trội bởi nó
@@ -49,7 +53,7 @@ def apply_fast_non_dominated_sorting(pop):
         
     return fronts
 
-def assign_crowding_distance(front):
+def assign_crowding_distance(front: list[Individual]) -> None:
     l = len(front)
     if l == 0: return
     
@@ -73,7 +77,7 @@ def assign_crowding_distance(front):
         for i in range(1, l-1):
             front[i].distance += (front[i+1].fitness[m] - front[i-1].fitness[m]) / norm
             
-def nsga2_tourn_selection(pop, tour_size):
+def nsga2_tourn_selection(pop: list[Individual], tour_size: int) -> Individual:
     """
     Chọn cha mẹ: So sánh 2 cá thể ngẫu nhiên.
     1. Rank nhỏ hơn (tốt hơn) được chọn
@@ -93,7 +97,7 @@ def nsga2_tourn_selection(pop, tour_size):
                 tourn.remove(i1)
     return tourn[0]
 
-def nsga2_sv_selection(combined_pop, pop_size):
+def nsga2_sv_selection(combined_pop: list[Individual], pop_size: int) -> list[Individual]:
     """Chọn lọc sinh tồn đủ số cá thể cho quần thể từ quần thể kết hợp"""
     fronts = apply_fast_non_dominated_sorting(combined_pop)
     new_pop = []
@@ -114,7 +118,11 @@ def nsga2_sv_selection(combined_pop, pop_size):
 # ---------------------------------------
 # Genetic Programming Hyper Heuristic
 # ---------------------------------------
-def run_gphh_evolution(problem, **kwargs):
+def run_gphh_evolution(
+        problem: Problem, 
+        **kwargs: Any
+    ) -> tuple[list[Individual], list[Individual], list[dict]]:
+    
     seed = kwargs.get('seed', None)
     if seed is not None:
         random.seed(seed)
