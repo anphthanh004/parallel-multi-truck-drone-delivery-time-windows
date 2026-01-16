@@ -3,6 +3,8 @@ import random
 import copy
 from typing import Any, Literal, Optional
 from .problem_structures import Vehicle, Problem, Request
+from abc import ABC, abstractmethod
+
 # ---------------------
 # GP terminal node
 # ---------------------

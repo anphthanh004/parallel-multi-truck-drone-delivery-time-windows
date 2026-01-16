@@ -10,10 +10,12 @@ from .gp_structure import NodeGP, Individual
 # Giả lập phân bổ sự kiện
 # -------------------------
 
-def simulate_policy(indi: Individual, pro: Problem) -> dict:
+def simulate_policy(indi: Individual, pro: Problem, **kwargs) -> dict:
     local_pro = copy.deepcopy(pro)
     close_time = local_pro.depot_time_window[1]
-
+    assignment_n = kwargs.get("assignment_n", 1)
+    time_slot = kwargs.get("time_slot", 0)
+    
     event_queue = []
     for req in local_pro.requests:
         heapq.heappush(event_queue, (req.release_time, "ARRIVE", req.id))
@@ -61,6 +63,8 @@ def simulate_policy(indi: Individual, pro: Problem) -> dict:
                 continue
 
             candidates.sort(key=lambda x: x[0], reverse=True)
+            
+            assigned_count = 0
             for score, veh in candidates:
                 start_service_time = max(cur_time, veh.busy_until)
                 travel_time = veh.moving_time_to(req.location)
@@ -71,7 +75,11 @@ def simulate_policy(indi: Individual, pro: Problem) -> dict:
                 # Nếu hiện tại xe đang rảnh thì điều phối cho xe này luôn
                 if veh.busy_until <= cur_time + 1e-6:
                     _dispatch_vehicle(veh, indi, local_pro, cur_time, event_queue)
-                break
+                
+                assigned_count += 1
+                # Nếu đã gán đủ số lượng xe quy định thì dừng
+                if assigned_count >= assignment_n:
+                    break
 
         elif ev_type == "VEH_FREE":
             vid = payload

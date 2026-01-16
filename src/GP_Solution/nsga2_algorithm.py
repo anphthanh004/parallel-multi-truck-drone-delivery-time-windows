@@ -6,6 +6,7 @@ from typing import Any, Literal
 from .problem_structures import Vehicle, Problem, Request
 from .gp_structure import NodeGP, Individual
 
+# from .initalization_old import create_greedy_pop
 from .initalization import create_greedy_pop
 from .simulation import simulate_policy
 from .gp_operators import apply_mutation, perform_crossover
@@ -132,11 +133,13 @@ def run_gphh_evolution(
     max_depth = kwargs.get('max_depth', 6) # full depth for mutation, crossover
     tourn_s_size = kwargs.get('tourn_s_size', 4)
     max_gen = kwargs.get('max_generations', 20)
+    assignment_n = kwargs.get('assignment_n', 1)
+    time_slot = kwargs.get('assignment_n', 0)
     
     current_pop = create_greedy_pop(pop_size, max_depth=max_depth-1)
     
     for ind in current_pop:
-        simulate_policy(ind, problem)
+        simulate_policy(ind, problem, assignment_n=assignment_n, time_slot=time_slot)
     
     # sắp xếp nhanh không trội để đạt được các pareto front và tính khoảng cách mật độ cho từng cá thể trong front
     initial_pareto_fronts = apply_fast_non_dominated_sorting(current_pop)

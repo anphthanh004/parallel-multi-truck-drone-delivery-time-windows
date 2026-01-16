@@ -1,0 +1,10 @@
+data: "data/WithTimeWindows3/100.40.2.json"
+pop_size: 80
+gen: 200
+max_depth: 6
+c_rate: 0.8
+m_rate: 0.2
+tourn_size: 4
+seed: 42
+assignment_n: 4
+time_slot: 0

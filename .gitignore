@@ -1,5 +1,9 @@
 __pycache__/
 *.pyc
+pyvenv.cfg
+main_old.py
 venv/
 draft/
 reference_solution/
+test/
+results/

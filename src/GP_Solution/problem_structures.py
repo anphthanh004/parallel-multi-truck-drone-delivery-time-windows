@@ -1,20 +1,5 @@
 import math
 from typing import Any, Literal, Optional
-
-# class Request:
-#     def __init__(self, id, location: tuple[float, float], 
-#                  d_i: float, able_drone: Literal[1, 0], 
-#                  r_i: float, e_i:float, l_i: float):
-#         self.id = id
-#         self.location = location # (x,y)
-#         self.demand = d_i
-#         self.able_drone = able_drone
-#         self.release_time = r_i
-#         self.time_window = (e_i, l_i)
-#         self.is_picked_up = False
-#         self.pickup_time = None
-#         self.is_served = False
-#         self.l_w = 3600.0
 from dataclasses import dataclass, field
 
 @dataclass
