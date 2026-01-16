@@ -54,7 +54,7 @@ def sequencing_rule_terminal(
         curr_time: float = 0.0
     ) -> float:
     
-    # ST0: thời gian di chuyển càng ngắn thì càng ngắn thì càng được ưu tiên - w=0.4
+    # ST0: thời gian di chuyển đến càng ngắn thì càng được ưu tiên - w=0.4
     if opt == 0:
         return veh.moving_time_to(req.location) / pro.depot_time_window[1]
     

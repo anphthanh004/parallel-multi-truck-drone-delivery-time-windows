@@ -51,7 +51,7 @@ class Vehicle:
         self.req_queue: list[Request] = []
         self.picked_up_orders: list[Request] = []
         self.busy_until: float = 0
-        self.routes: list[int | str] = []
+        self.routes: list[list[int | str]] = []
         # self.current_trip = None
     
     def moving_time_to(self, location: tuple[float, float]) -> float:

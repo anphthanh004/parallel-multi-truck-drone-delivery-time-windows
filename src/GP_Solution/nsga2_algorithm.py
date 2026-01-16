@@ -196,14 +196,16 @@ def run_gphh_evolution(
         }
         stats_history.append(stats)
         
-        print(f"Gen {gen:3d} | Best Ratio: {current_best_f1.f1:.3f} | Best Time Score: {current_best_f2.f2:.3f}")
+        print(f"Gen {gen:3d} | Best Served Ratio: {current_best_f1.f1:.3f} | Best Makespan Score: {current_best_f2.f2:.3f}")
         
     # Trả về quần thể cuối cùng và Pareto Front
     fronts = apply_fast_non_dominated_sorting(current_pop)
     first_front = fronts[0]
     
-    best_f1 = min(first_front, key=lambda x: x.f1).f1
-    best_f2 = min(first_front, key=lambda x: x.f2).f2
+    # best_f1 = min(first_front, key=lambda x: x.f1).f1
+    # best_f2 = min(first_front, key=lambda x: x.f2).f2
+    best_f1 = max(first_front, key=lambda x: x.f1).f1
+    best_f2 = max(first_front, key=lambda x: x.f2).f2
     
     # return current_pop, first_front, stats_history
     
