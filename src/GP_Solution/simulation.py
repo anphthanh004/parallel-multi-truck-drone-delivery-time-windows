@@ -66,6 +66,8 @@ def simulate_policy(indi: Individual, pro: Problem, **kwargs) -> dict:
             
             assigned_count = 0
             for score, veh in candidates:
+                if req.is_picked_up or req.is_served:
+                    break
                 start_service_time = max(cur_time, veh.busy_until)
                 travel_time = veh.moving_time_to(req.location)
                 arrival_time = start_service_time + travel_time

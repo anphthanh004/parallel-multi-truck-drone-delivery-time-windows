@@ -5,13 +5,20 @@ project:
     - 6.5.1.yaml
     - 6.5.2.yaml
     - ...
-  compare:
-    
+  compares:
+    - without_time_slot
+    - with_time_slot
   data:
     WithTimeWindows3:
       - 6.5.1.json
       - 6.5.2.json
       - ...
+  reference_solution:
+    WithTimeWindows3:
+      - 6.5.1.json
+      - 6.5.1.json.result.jsonc
+      - 6.5.2.json
+      - 6.5.2.json.result.jsonc      
   results:
     file:
       - reference_solution.json

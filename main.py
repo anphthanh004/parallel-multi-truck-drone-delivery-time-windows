@@ -41,6 +41,7 @@ def main():
     parser.add_argument('--m_rate', type=float)
     parser.add_argument('--tourn_size', type=int)
     parser.add_argument('--seed', type=int)
+    parser.add_argument('-st', '--solution_type', type=str, default='without_time_slot')
     parser.add_argument('-asn','--assignment_n', type=int)
     # parser.add_argument('-ts','--time_slot', type=int, default=0)
     # nargs='?': 0 hoặc 1 giá trị
@@ -81,16 +82,18 @@ def main():
     
     # if not args.time_slot:
     #     config['time_slot'] = 0
-
+    solution_type = "without_time_slot"
     if args.time_slot is None:
         # Trường hợp 1: Không nhập -ts -> Mặc định về 0 
         config['time_slot'] = 0 
     elif args.time_slot == -1:
         # Trường hợp 2: Nhập -ts (nhưng không số) -> Giữ nguyên giá trị đã load từ YAML
-        pass 
+        # pass 
+        solution_type = "with_time_slot"
     else:
         # Trường hợp 3: Nhập -ts 1000 -> Ghi đè bằng giá trị nhập vào
         config['time_slot'] = args.time_slot
+        solution_type = "with_time_slot"
     
     # --- BẮT ĐẦU CHẠY ---
     set_seed(config['seed'])
@@ -151,11 +154,14 @@ def main():
         raw_makespan = (1.0 - ind.f2) * close_time
         print(f"#{i+1}: Served: {served_reqs} ({ind.f1:.2%}) | Makespan: {raw_makespan:.4f} (Score: {ind.f2:.4f})")
     
+    
     save_results(
-        file_name=args.file_name, 
+        folder_name=args.file_name, 
+        solution_type=solution_type,
         final_results=final_results, 
         pop_history=pop_history, 
         stats_history=history, 
+        config=config
     )
     
 if __name__ == "__main__":
