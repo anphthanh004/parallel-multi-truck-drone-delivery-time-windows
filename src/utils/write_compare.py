@@ -3,8 +3,10 @@ import json
 import pandas as pd
 import argparse
 
+def instance_key(s):
+    return tuple(map(int, s.split(".")))
 
-def main(output_name):
+def write_compare(output_name):
     reference_path = '../../results/reference_solution.json'
     with open(reference_path, 'r') as f:
         reference = json.load(f)
@@ -34,7 +36,10 @@ def main(output_name):
                     data.append(row)
 
     df = pd.DataFrame(data)
-    df = df.sort_values(by='instance')
+    # df = df.sort_values(by='instance')
+    df['instance_key'] = df['instance'].apply(instance_key)
+    df = df.sort_values(by='instance_key')
+    df = df.drop(columns=['instance_key'])
 
     output_dir = '../../compares'
     os.makedirs(output_dir, exist_ok=True)
@@ -47,4 +52,4 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Write csv file")
     parser.add_argument('-o', '--output', type=str, default='without_time_slot.csv')
     args = parser.parse_args()
-    main(args.output)
+    write_compare(args.output)
