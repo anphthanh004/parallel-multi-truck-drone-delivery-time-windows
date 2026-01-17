@@ -45,6 +45,6 @@ def main(output_name):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Write csv file")
-    parser.add_argument('-o', '--output', type=str, default='without_time_slot')
+    parser.add_argument('-o', '--output', type=str, default='without_time_slot.csv')
     args = parser.parse_args()
     main(args.output)
