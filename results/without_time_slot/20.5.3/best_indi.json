@@ -1,0 +1,65 @@
+{
+    "served": 20,
+    "dropped": 0,
+    "makespan": 588.889453458488,
+    "routing_tree": "(min (add (max (min RT0 RT1) (max RT3 RT2)) RT4) (div (div RT2 RT0) (mul (div RT2 RT5) (min (min RT0 RT3) RT3))))",
+    "sequencing_tree": "(max (max ST0 ST4) (sub ST2 ST5))",
+    "vehicles": [
+        {
+            "id": 1,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    1,
+                    6,
+                    18,
+                    4,
+                    12,
+                    11
+                ]
+            ],
+            "makespan": 588.889453458488
+        },
+        {
+            "id": 2,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    2,
+                    14,
+                    7,
+                    17,
+                    19
+                ]
+            ],
+            "makespan": 583.8048937357139
+        },
+        {
+            "id": 3,
+            "type": "DRONE",
+            "routes": [
+                [
+                    5,
+                    9,
+                    15,
+                    8,
+                    3
+                ]
+            ],
+            "makespan": 472.4196361937794
+        },
+        {
+            "id": 4,
+            "type": "DRONE",
+            "routes": [
+                [
+                    10,
+                    20,
+                    13,
+                    16
+                ]
+            ],
+            "makespan": 395.5058066653487
+        }
+    ]
+}

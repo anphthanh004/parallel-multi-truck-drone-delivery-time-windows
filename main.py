@@ -9,7 +9,7 @@ from pathlib import Path
 from src.GP_Solution.load_data import load_data
 from src.GP_Solution.nsga2_algorithm import run_gphh_evolution
 from src.GP_Solution.problem_structures import Problem
-
+from src.utils.results_handler import save_results
 
 def set_seed(seed_value):
     random.seed(seed_value)
@@ -123,8 +123,9 @@ def main():
     except Exception as e:
         print(f"Lỗi khi load data: {e}")
         sys.exit(1)
-
-    final_pop, first_front, history = run_gphh_evolution(
+    # final_pop, first_front, history, pop_history, best_ind, final_results
+    # final_pop, first_front, history 
+    final_pop, first_front, history, pop_history, best_ind, final_results= run_gphh_evolution(
         problem_instance,
         pop_size=config['pop_size'],
         max_generations=config['gen'],
@@ -149,6 +150,13 @@ def main():
         served_reqs = int(ind.f1 * len(problem_instance.requests))
         raw_makespan = (1.0 - ind.f2) * close_time
         print(f"#{i+1}: Served: {served_reqs} ({ind.f1:.2%}) | Makespan: {raw_makespan:.4f} (Score: {ind.f2:.4f})")
-
+    
+    save_results(
+        file_name=args.file_name, 
+        final_results=final_results, 
+        pop_history=pop_history, 
+        stats_history=history, 
+    )
+    
 if __name__ == "__main__":
     main()

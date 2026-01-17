@@ -1,0 +1,37 @@
+project: 
+  file:
+    - main.py
+  config:
+    - 6.5.1.yaml
+    - 6.5.2.yaml
+    - ...
+  compare:
+    
+  data:
+    WithTimeWindows3:
+      - 6.5.1.json
+      - 6.5.2.json
+      - ...
+  results:
+    file:
+      - reference_solution.json
+    with_time_slot:
+    without_time_slot:
+      6.5.1:
+        - best_indi.json
+        - generations.json
+      6.5.2:
+        - best_indi.json
+        - generations.json
+      ...:
+  src:
+    GP_Solution:
+      - gp_operators.py
+      - gp_structure.py
+      - initalization.py
+      - load_data.py
+      - nsga2_algorithm.py
+      - problem_structures.py
+      - simulation.py
+    utils:
+      - results_handler.py

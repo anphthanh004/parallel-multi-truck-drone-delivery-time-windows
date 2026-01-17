@@ -1,0 +1,66 @@
+{
+    "served": 19,
+    "dropped": 1,
+    "makespan": 4376.061599952647,
+    "routing_tree": "(max (add RT2 RT1) RT1)",
+    "sequencing_tree": "ST5",
+    "vehicles": [
+        {
+            "id": 1,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    15,
+                    14,
+                    20,
+                    13,
+                    8,
+                    18,
+                    12
+                ],
+                [
+                    7
+                ]
+            ],
+            "makespan": 4350.646842260771
+        },
+        {
+            "id": 2,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    1,
+                    17,
+                    10,
+                    16,
+                    6,
+                    11,
+                    4,
+                    3,
+                    19
+                ]
+            ],
+            "makespan": 4376.061599952647
+        },
+        {
+            "id": 3,
+            "type": "DRONE",
+            "routes": [
+                [
+                    5
+                ]
+            ],
+            "makespan": 696.9280020212375
+        },
+        {
+            "id": 4,
+            "type": "DRONE",
+            "routes": [
+                [
+                    2
+                ]
+            ],
+            "makespan": 1168.7971979125332
+        }
+    ]
+}

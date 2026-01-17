@@ -104,7 +104,7 @@ def simulate_policy(indi: Individual, pro: Problem, **kwargs) -> dict:
     indi.f1 = f1
     indi.f2 = f2
     indi.fitness = (f1, f2)
-
+    
     return {
         "total": total, # tổng số request
         "served": served_count, # tổng số request được phục vụ
@@ -113,6 +113,8 @@ def simulate_policy(indi: Individual, pro: Problem, **kwargs) -> dict:
         "ratio": f1, # tỉ lệ được phục vụ = f1
         "f1": f1, # f1 của indi
         "f2": f2,  # f2 của indi
+        "r_tree": indi.r_tree.to_string(),
+        "s_tree": indi.s_tree.to_string(),
         "simulated_problem": local_pro # pro sau khi điều phối: các request và vehicle đã thay đổi trạng thái
     }
 

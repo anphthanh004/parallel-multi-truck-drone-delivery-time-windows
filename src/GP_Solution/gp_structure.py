@@ -191,7 +191,12 @@ class Individual:
     def copy(self) -> Individual:
         r_tree_dc = self.r_tree.copy()
         s_tree_dc = self.s_tree.copy()
-        return Individual(r_tree_dc, s_tree_dc)
+        new_indi = Individual(r_tree_dc, s_tree_dc)
+        new_indi.f1 = self.f1
+        new_indi.f2 = self.f2
+        new_indi.fitness = self.fitness
+        # return Individual(r_tree_dc, s_tree_dc)
+        return new_indi
     
     def to_string(self) -> str:
         print(f"R: {self.r_tree.to_string()} | S: {self.s_tree.to_string()}")

@@ -1,0 +1,33 @@
+{
+    "served": 6,
+    "dropped": 0,
+    "makespan": 699.6826367818564,
+    "routing_tree": "(min RT5 RT1)",
+    "sequencing_tree": "(max (div ST3 ST2) (div (min (mul ST0 ST2) ST0) (mul (add ST0 ST2) (add ST0 ST0))))",
+    "vehicles": [
+        {
+            "id": 1,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    2
+                ]
+            ],
+            "makespan": 699.6826367818564
+        },
+        {
+            "id": 2,
+            "type": "DRONE",
+            "routes": [
+                [
+                    1,
+                    4,
+                    5,
+                    3,
+                    6
+                ]
+            ],
+            "makespan": 689.0287872511851
+        }
+    ]
+}

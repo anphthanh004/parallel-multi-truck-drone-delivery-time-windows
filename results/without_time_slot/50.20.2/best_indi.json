@@ -1,0 +1,116 @@
+{
+    "served": 45,
+    "dropped": 5,
+    "makespan": 4136.083020038983,
+    "routing_tree": "(max (mul RT2 (max (sub RT1 RT1) (sub RT0 RT5))) (sub (add RT2 RT5) RT0))",
+    "sequencing_tree": "(min (div ST5 ST3) (min (div (add ST3 ST5) (max ST2 ST4)) ST0))",
+    "vehicles": [
+        {
+            "id": 1,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    22,
+                    44,
+                    41,
+                    20,
+                    13,
+                    42,
+                    18,
+                    14
+                ]
+            ],
+            "makespan": 3346.099660981607
+        },
+        {
+            "id": 2,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    11,
+                    21,
+                    35,
+                    8,
+                    9,
+                    30,
+                    15,
+                    36,
+                    33,
+                    16,
+                    2,
+                    48,
+                    47
+                ]
+            ],
+            "makespan": 4136.083020038983
+        },
+        {
+            "id": 3,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    7,
+                    19,
+                    38,
+                    24,
+                    27,
+                    5,
+                    45,
+                    26,
+                    3
+                ]
+            ],
+            "makespan": 4073.323694586322
+        },
+        {
+            "id": 4,
+            "type": "DRONE",
+            "routes": [
+                [
+                    10,
+                    23,
+                    12
+                ],
+                [
+                    31
+                ]
+            ],
+            "makespan": 1869.298186925746
+        },
+        {
+            "id": 5,
+            "type": "DRONE",
+            "routes": [
+                [
+                    39,
+                    4,
+                    17
+                ],
+                [
+                    34,
+                    32
+                ]
+            ],
+            "makespan": 2221.3495131287186
+        },
+        {
+            "id": 6,
+            "type": "DRONE",
+            "routes": [
+                [
+                    49,
+                    28,
+                    46
+                ],
+                [
+                    1,
+                    6
+                ],
+                [
+                    50
+                ]
+            ],
+            "makespan": 3757.496502077818
+        }
+    ]
+}

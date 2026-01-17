@@ -1,5 +1,5 @@
 data: "data/WithTimeWindows3/100.10.1.json"
-pop_size: 50
+pop_size: 80
 gen: 200
 max_depth: 6
 c_rate: 0.8

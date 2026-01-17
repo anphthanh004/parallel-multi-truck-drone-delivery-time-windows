@@ -136,10 +136,12 @@ def run_gphh_evolution(
     assignment_n = kwargs.get('assignment_n', 1)
     time_slot = kwargs.get('assignment_n', 0)
     
+    pop_history = []
     current_pop = create_greedy_pop(pop_size, max_depth=max_depth-1)
     
     for ind in current_pop:
         simulate_policy(ind, problem, assignment_n=assignment_n, time_slot=time_slot)
+    pop_history.append([ind.copy() for ind in current_pop])
     
     # sắp xếp nhanh không trội để đạt được các pareto front và tính khoảng cách mật độ cho từng cá thể trong front
     initial_pareto_fronts = apply_fast_non_dominated_sorting(current_pop)
@@ -187,7 +189,9 @@ def run_gphh_evolution(
         current_pareto_fronts = apply_fast_non_dominated_sorting(current_pop)
         for front in current_pareto_fronts:
             assign_crowding_distance(front)
-            
+        
+        pop_history.append([ind.copy() for ind in current_pop])
+        
         # Thống kê
         current_best_f1 = max(current_pop, key=lambda x: x.f1)
         current_best_f2 = max(current_pop, key=lambda x: x.f2)
@@ -223,30 +227,11 @@ def run_gphh_evolution(
             best_ind = ind
 
     if best_ind:
-        # Chạy lại mô phỏng một lần cuối cho cá thể tốt nhất để lấy dữ liệu route
         final_results = simulate_policy(best_ind, problem)
-        sim_pro = final_results['simulated_problem']
-
-        print("\n" + "="*50)
-        print("LOG LỘ TRÌNH CÁ THỂ TỐT NHẤT (BEST DISTANCE TO IDEAL)")
-        print(f"Khoảng cách tới điểm lý tưởng: {min_dist:.4f}")
-        print(f"Served Ratio (f1): {best_ind.f1:.2%}")
-        print(f"Makespan Score (f2): {best_ind.f2:.4f}")
-        print("-" * 50)
-
-        for v in sim_pro.vehicles:
-            print(f"Vehicle {v.id} [{v.type}]:")
-            if not v.routes or (len(v.routes) == 1 and not v.routes[0]):
-                print("  - Không thực hiện nhiệm vụ nào.")
-            else:
-                for i, trip in enumerate(v.routes):
-                    route_str = " -> ".join(map(str, trip))
-                    print(f"  Chuyến {i+1}: Depot -> {route_str} -> Depot")
-            print(f"  Thời gian hoàn thành: {v.busy_until:.2f}")
-            print("-" * 30)
-        print("="*50 + "\n")
-
-    return current_pop, first_front, stats_history
+        final_results['r_tree'] = best_ind.r_tree.to_string()  
+        final_results['s_tree'] = best_ind.s_tree.to_string()
+        
+    return current_pop, first_front, stats_history, pop_history, best_ind, final_results
         
                 
     
