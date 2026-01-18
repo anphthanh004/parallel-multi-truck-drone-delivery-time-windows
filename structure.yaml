@@ -6,8 +6,8 @@ project:
     - 6.5.2.yaml
     - ...
   compares:
-    - without_time_slot
-    - with_time_slot
+    - without_time_slot.csv
+    - with_time_slot.csv
   data:
     WithTimeWindows3:
       - 6.5.1.json
@@ -31,6 +31,18 @@ project:
         - best_indi.json
         - generations.json
       ...:
+  results2:
+    with_time_slot:
+    without_time_slot:
+      6.5.1:
+        - best_indi.json
+        - generations.json
+        - last_config.yaml
+      6.5.2:
+        - best_indi.json
+        - generations.json
+        - last_config.yaml
+      ...:
   src:
     GP_Solution:
       - gp_operators.py
@@ -41,4 +53,7 @@ project:
       - problem_structures.py
       - simulation.py
     utils:
+      - read_jsonc.py
       - results_handler.py
+      - validator.py
+      - write_compare.py

@@ -137,10 +137,16 @@ def _dispatch_vehicle(
         arrival_at_depot = ready_time + time_to_depot
         
         for picked in veh.picked_up_orders:
-            if (arrival_at_depot - picked.pickup_time > picked.l_w + 1e-6) or \
-               (arrival_at_depot > depot_close + 1e-6):
-                # _execute_failed_return_sequence(veh, picked, ready_time, depot_close, event_queue)
-                _execute_failed_return_sequence(veh, picked, ready_time, event_queue)
+            # if (arrival_at_depot - picked.pickup_time > picked.l_w + 1e-6) or \
+            #    (arrival_at_depot > depot_close + 1e-6):
+            #     # _execute_failed_return_sequence(veh, picked, ready_time, depot_close, event_queue)
+            #     _execute_failed_return_sequence(veh, picked, ready_time, event_queue)
+            #     return
+            if (arrival_at_depot - picked.pickup_time > picked.l_w + 1e-6):
+                _execute_failed_return_sequence(veh, picked, ready_time, event_queue, note="Violate l_w")
+                return
+            if (arrival_at_depot > depot_close + 1e-6):
+                _execute_failed_return_sequence(veh, picked, ready_time, event_queue, note="Violate depot time window")
                 return
 
     # 2. Chọn khách hàng tiếp theo để đến lấy hàng
@@ -148,7 +154,7 @@ def _dispatch_vehicle(
     for req in veh.req_queue:
         if req.is_served or req.is_picked_up: continue
         
-        # ready_time: thời điểm sẵn sàng đi (lấy muộn nhất của thời điểm bắt đầu và thời điểm xe hết bận rộn)
+        # ready_time: thời điểm sẵn sàng đi (lấy muộn nhất của thời điểm bắt đầu bắt đầu điều phối xe và thời điểm xe hết bận rộn)
         travel_time = veh.moving_time_to(req.location) # khoảng thời gian di chuyển đến địa điểm mới
         arrival_req = ready_time + travel_time         # thời điểm tới địa điểm mới
         service_start = max(arrival_req, req.time_window[0])  # nếu đến sớm thì phải chờ 
@@ -178,8 +184,16 @@ def _dispatch_vehicle(
         candidates.append((score, req, travel_time, service_start))
 
     if candidates:
+        candidates.sort(key=lambda x: x[0])
+    for can in candidates:
+        req = can[1]
+        travel_time = can[2]
+        service_start = can[3]
+        if veh.remaining_capacity < req.demand -1e-6:
+            continue
         # _execute_pickup(veh, candidates, ready_time, event_queue)
-        _execute_pickup(veh, candidates, event_queue)
+        _execute_pickup(veh=veh, next_req=req, ready_time=ready_time, travel_time=travel_time, service_start=service_start, event_queue=event_queue)
+        # _execute_pickup(veh, candidates, event_queue)
         return
 
     # 3. quay về depot nếu không còn khách hàng nào có thể phục vụ 
@@ -189,50 +203,45 @@ def _dispatch_vehicle(
         # _process_final_return(veh, ready_time, depot_close, event_queue)
         _process_final_return(veh, ready_time, event_queue)
 
-def _execute_failed_return_sequence(
-        veh: Vehicle, 
-        urgent_req: Request, # đơn hàng đã được lấy, bây giờ cần phải trả đến nơi cũ của khách
-        ready_time: float, 
-        # depot_close: float, 
-        event_queue: list[tuple[float, str, Optional[int]]]
-    ) -> None:
-    """Xử lý khi một đơn hàng chắc chắn vi phạm l_w"""
-    
-    travel_to_cust = veh.moving_time_to(urgent_req.location) # khoảng thời gian đến chỗ customer
-    arrival_at_cust = ready_time + travel_to_cust
-    
-    # Xe đến chỗ khách: tọa độ hiện tại của xe là tọa độ của khách, hết bận là lúc đến chỗ khách (không cần kiểm tra time window của khách) 
-    if veh.type == "DRONE":
-        veh.remaining_range -= (veh.distance_to(urgent_req.location) / veh.velocity)
-    veh.current_location = urgent_req.location
-    veh.busy_until = arrival_at_cust
-    
-    if not veh.routes: veh.routes.append([])
-    veh.routes[-1].append(f"FAILED_RETURN_{urgent_req.id}")
-    
-    # Trả hàng cho khách
-    # Cập nhật:
-    # + Request: được lấy=False, thời điểm lấy=False (reset cho đơn hàng)
-    # + Vehicle: trả lại sức chứa, danh sách lấy hàng bỏ đi đơn đó
-    urgent_req.is_picked_up = False
-    urgent_req.pickup_time = None
-    veh.remaining_capacity += urgent_req.demand
-    veh.picked_up_orders = [p for p in veh.picked_up_orders if p.id != urgent_req.id]
-    
-    heapq.heappush(event_queue, (veh.busy_until, "VEH_FREE", veh.id))
-
 
 def _execute_pickup(
         veh: Vehicle, 
-        candidates: Vehicle, 
-        # ready_time: float, 
+        # candidates: Vehicle, 
+        next_req: Request,
+        ready_time: float,
+        travel_time: float,
+        service_start: float,
         event_queue: list[tuple[float, str, Optional[int]]]
     ) -> None:
     """Thực hiện hành động lấy hàng cho ứng viên tốt nhất."""
     # candidates: là list gồm (score, req, travel_time, service_start)
     # score: điểm cho sequencing rule (min=best), req: Request, travel_time: khoảng thời gian di chuyển, service_start: thời điểm bắt đầu phục vụ 
-    _, next_req, _, service_start = min(candidates, key=lambda x: x[0])
-    
+    # score, next_req, travel_time, service_start = min(candidates, key=lambda x: x[0])
+    arrival_time = ready_time + travel_time
+        
+    if veh.current_location == (0.0, 0.0): 
+        veh.routes.append([])
+    # veh.routes[-1].append(next_req.id)
+    if veh.type == "DRONE":
+        veh.remaining_range -= veh.moving_time_to(next_req.location)
+    # Log entry
+    entry = {
+        'action': 'pickup', # tên hành động
+        'req_id': next_req.id, # id của đơn hàng
+        'ready_time': ready_time, # thời điểm sẵn sàng đi (max của start_time-thời điểm bắt đầu sự kiện này, busy_until-thời điểm xe hết bận)
+        'travel_time': travel_time, # khoảng thời gian di chuyển đến địa điểm đó
+        'arrival_time': arrival_time, # thời điểm đến chỗ đơn hàng
+        'service_start': service_start, # thời điểm bắt đầu phục vụ (max arrival_time-thời điểm đến chỗ đơn hàng, time window[0] của request)
+        'location': next_req.location, # tọa độ đơn hàng
+        'prev_location': veh.current_location, # tọa độ trước đó
+        'vehicle_state': {
+            'busy_until': service_start, # thời điểm hết bận: thời gian phục vụ = 0 nên thời điểm hết bận là lúc bắt đầu phục vụ 
+            'remaining_capacity': veh.remaining_capacity - next_req.demand,  # Sau hành động
+            'remaining_range': veh.remaining_range if veh.type == 'DRONE' else None # giảm bán kính bay của DRONE (đã trừ trước đó)
+        },
+        'note': None
+    }
+    veh.routes[-1].append(entry)
     # Sau khi lấy hàng này thì những cái sau thay đổi:
     # + sức chứa còn lại của xe (remaining_capacity) 
     # + danh sách các đơn hàng đang giữ trên xe (picked_up_orders)
@@ -241,23 +250,13 @@ def _execute_pickup(
     # + vị trí (location) của xe
     # + thời điểm hết bận rộn (busy_until) của xe (là sau khi phục vụ=thời điểm bắt đầu phục vụ)
     # + hàng đợi request (request_queue) bỏ đi đơn hàng đó
-    
-    veh.remaining_capacity -= next_req.demand
-    veh.picked_up_orders.append(next_req)
-    
     next_req.is_picked_up = True
     next_req.pickup_time = service_start
     
-    if veh.type == "DRONE":
-        veh.remaining_range -= (veh.distance_to(next_req.location) / veh.velocity)
-        
-    if veh.current_location == (0, 0): 
-        veh.routes.append([])
-    veh.routes[-1].append(next_req.id)
-    
+    veh.remaining_capacity -= next_req.demand
+    veh.picked_up_orders.append(next_req)
     veh.current_location = next_req.location
     veh.busy_until = service_start
-    
     veh.req_queue = [r for r in veh.req_queue if r.id != next_req.id]
     
     heapq.heappush(event_queue, (veh.busy_until, "VEH_FREE", veh.id))
@@ -269,8 +268,29 @@ def _process_final_return(
         event_queue: list[tuple[float, str, Optional[int]]]
     ) -> None:
     """Quay về depot và cập nhật trạng thái phục vụ cuối cùng của các đơn hàng."""
-    arrival_at_depot = ready_time + veh.moving_time(veh.current_location, (0, 0))
+    travel_time = veh.moving_time_to((0.0, 0.0))
+    arrival_at_depot = ready_time + travel_time
     
+    if veh.type == "DRONE": veh.recharge()
+    
+    entry = {
+        'action': 'return_depot',
+        'req_id': None,
+        'ready_time': ready_time,
+        'travel_time': travel_time,
+        'arrival_time': arrival_at_depot,
+        'service_start': None,
+        'location': (0.0, 0.0),
+        'prev_location': veh.current_location,
+        'vehicle_state': {
+            'remaining_capacity': veh.capacity,
+            'busy_until': arrival_at_depot,
+            'remaining_range': veh.max_range if veh.type == 'DRONE' else None  # Recharge
+        },
+        'note': None
+    }
+    veh.routes[-1].append(entry)
+
     for r in veh.picked_up_orders:
         r.is_served = True
             
@@ -278,6 +298,60 @@ def _process_final_return(
     veh.busy_until = arrival_at_depot
     veh.current_location = (0.0, 0.0)
     veh.remaining_capacity = veh.capacity
-    if veh.type == "DRONE": veh.recharge()
+    
+    heapq.heappush(event_queue, (veh.busy_until, "VEH_FREE", veh.id))
+    
+
+def _execute_failed_return_sequence(
+        veh: Vehicle, 
+        urgent_req: Request, # đơn hàng đã được lấy, bây giờ cần phải trả đến nơi cũ của khách
+        ready_time: float, 
+        # depot_close: float, 
+        event_queue: list[tuple[float, str, Optional[int]]],
+        note: str
+    ) -> None:
+    """Xử lý khi một đơn hàng chắc chắn vi phạm l_w"""
+    
+    travel_to_cust = veh.moving_time_to(urgent_req.location) # khoảng thời gian đến chỗ customer
+    arrival_at_cust = ready_time + travel_to_cust
+    
+    if not veh.routes: 
+        veh.routes.append([])
+    
+    if veh.type == "DRONE":
+        veh.remaining_range -= veh.moving_time_to(urgent_req.location)
+    # Log entry
+    entry = {
+        'action': 'failed_return',
+        'req_id': urgent_req.id,
+        'ready_time': ready_time,
+        'travel_time': travel_to_cust,
+        'arrival_time': arrival_at_cust,
+        'service_start': None,
+        'location': urgent_req.location,
+        'prev_location': veh.current_location,
+        'vehicle_state': {
+            'remaining_capacity': veh.remaining_capacity + urgent_req.demand,  # Sau trả hàng
+            'busy_until': arrival_at_cust,
+            'remaining_range': veh.remaining_range if veh.type == 'DRONE' else None
+        },
+        'note': note
+    }
+    veh.routes[-1].append(entry)
+    
+    # veh.routes[-1].append(f"FAILED_RETURN_{urgent_req.id}")
+    # Xe đến chỗ khách: tọa độ hiện tại của xe là tọa độ của khách, hết bận là lúc đến chỗ khách (không cần kiểm tra time window của khách) 
+    # Trả hàng cho khách
+    # Cập nhật:
+    # + Request: được lấy=False, thời điểm lấy=False (reset cho đơn hàng)
+    # + Vehicle: trả lại sức chứa, danh sách lấy hàng bỏ đi đơn đó
+    urgent_req.is_picked_up = False
+    urgent_req.pickup_time = None
+    veh.current_location = urgent_req.location
+    veh.busy_until = arrival_at_cust
+    veh.remaining_capacity += urgent_req.demand
+    veh.picked_up_orders = [p for p in veh.picked_up_orders if p.id != urgent_req.id]
+    # if veh.type == "DRONE":
+    #     veh.remaining_range -= veh.moving_time_to(urgent_req.location)
     
     heapq.heappush(event_queue, (veh.busy_until, "VEH_FREE", veh.id))

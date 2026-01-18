@@ -1,0 +1,112 @@
+Valid: True
+
+Detailed Log:
+==================== VEHICLE 1 ====================
+✅ Valid vehicle ID: 1
+********** VEHICLE: 1 - NUM_ROUTES: 1 **********
+---------- VEHICLE: 1 - TYPE: TRUCK - ROUTE: 1 ----------
+✅ Valid action in entry for vehicle 1: pickup
+✅ Valid location in entry for vehicle 1
+✅ Valid previous location in entry for vehicle 1
+✅ Vehicle 1: Valid ready_time for pickup at req 3 (expected 0.0340, got 0.0340)
+✅ Vehicle 1: Valid travel_time for pickup at req 3 (expected 519.9836, got 519.9836)
+✅ Vehicle 1: Match arrival_time for pickup (expected 520.0176, got 520.0176)
+✅ Vehicle 1: Valid req_id 3
+✅ Vehicle 1: No time window violation for req 3 (service_start 520.0176, window (339.9836224333643, 699.9836224333643))
+✅ Vehicle 1: No capacity violation for req 3 (remaining 400.0000, demand 7.7297)
+✅ Vehicle 1: Can serve req 3
+✅ Vehicle 1: State match for busy_until
+✅ Vehicle 1: State match for remaining_capacity
+✅ Valid action in entry for vehicle 1: pickup
+✅ Valid location in entry for vehicle 1
+✅ Valid previous location in entry for vehicle 1
+✅ Vehicle 1: Valid ready_time for pickup at req 2 (expected 520.0176, got 520.0176)
+✅ Vehicle 1: Valid travel_time for pickup at req 2 (expected 328.8192, got 328.8192)
+✅ Vehicle 1: Match arrival_time for pickup (expected 848.8369, got 848.8369)
+✅ Vehicle 1: Valid req_id 2
+✅ Vehicle 1: No time window violation for req 2 (service_start 848.8369, window (668.80285345131, 1028.80285345131))
+✅ Vehicle 1: No capacity violation for req 2 (remaining 392.2703, demand 0.8618)
+✅ Vehicle 1: Can serve req 2
+✅ Vehicle 1: State match for busy_until
+✅ Vehicle 1: State match for remaining_capacity
+✅ Valid action in entry for vehicle 1: return_depot
+✅ Valid location in entry for vehicle 1
+✅ Valid previous location in entry for vehicle 1
+✅ Vehicle 1: Valid ready_time for return_depot at req None (expected 848.8369, got 848.8369)
+✅ Vehicle 1: Valid travel_time for return_depot at req None (expected 210.1210, got 210.1210)
+✅ Vehicle 1: Match arrival_time for return_depot (expected 1058.9579, got 1058.9579)
+✅ Vehicle 1: No l_w violation for req 3 (time 538.9403, l_w 3600.0000)
+✅ Vehicle 1: No l_w violation for req 2 (time 210.1210, l_w 3600.0000)
+✅ Vehicle 1: State match for remaining_capacity
+✅ Vehicle 1: State match for busy_until
+✅ Vehicle 1: Makespan does not exceed depot close time
+==================== VEHICLE 2 ====================
+✅ Valid vehicle ID: 2
+********** VEHICLE: 2 - NUM_ROUTES: 2 **********
+---------- VEHICLE: 2 - TYPE: DRONE - ROUTE: 1 ----------
+✅ Valid action in entry for vehicle 2: pickup
+✅ Valid location in entry for vehicle 2
+✅ Valid previous location in entry for vehicle 2
+✅ Vehicle 2: Valid ready_time for pickup at req 1 (expected 0.0063, got 0.0063)
+✅ Vehicle 2: Valid travel_time for pickup at req 1 (expected 242.6804, got 242.6804)
+✅ Vehicle 2: Match arrival_time for pickup (expected 242.6867, got 242.6867)
+✅ Vehicle 2: Valid req_id 1
+✅ Vehicle 2: No time window violation for req 1 (service_start 242.6867, window (62.68043631598857, 422.6804363159886))
+✅ Vehicle 2: No capacity violation for req 1 (remaining 2.2700, demand 0.5237)
+✅ Vehicle 2: Can serve req 1
+✅ Vehicle 2: State match for busy_until
+✅ Vehicle 2: State match for remaining_capacity
+✅ Vehicle 2: State match for remaining_range
+✅ Valid action in entry for vehicle 2: pickup
+✅ Valid location in entry for vehicle 2
+✅ Valid previous location in entry for vehicle 2
+✅ Vehicle 2: Valid ready_time for pickup at req 6 (expected 242.6867, got 242.6867)
+✅ Vehicle 2: Valid travel_time for pickup at req 6 (expected 112.6026, got 112.6026)
+✅ Vehicle 2: Match arrival_time for pickup (expected 355.2894, got 355.2894)
+✅ Vehicle 2: Valid req_id 6
+✅ Vehicle 2: No time window violation for req 6 (service_start 355.2894, window (175.28308456670425, 535.2830845667042))
+✅ Vehicle 2: No capacity violation for req 6 (remaining 1.7463, demand 0.7746)
+✅ Vehicle 2: Can serve req 6
+✅ Vehicle 2: State match for busy_until
+✅ Vehicle 2: State match for remaining_capacity
+✅ Vehicle 2: State match for remaining_range
+✅ Valid action in entry for vehicle 2: return_depot
+✅ Valid location in entry for vehicle 2
+✅ Valid previous location in entry for vehicle 2
+✅ Vehicle 2: Valid ready_time for return_depot at req None (expected 355.2894, got 355.2894)
+✅ Vehicle 2: Valid travel_time for return_depot at req None (expected 217.5210, got 217.5210)
+✅ Vehicle 2: Match arrival_time for return_depot (expected 572.8103, got 572.8103)
+✅ Vehicle 2: No l_w violation for req 1 (time 330.1236, l_w 3600.0000)
+✅ Vehicle 2: No l_w violation for req 6 (time 217.5210, l_w 3600.0000)
+✅ Vehicle 2: State match for remaining_capacity
+✅ Vehicle 2: State match for busy_until
+✅ Vehicle 2: State match for remaining_range
+---------- VEHICLE: 2 - TYPE: DRONE - ROUTE: 2 ----------
+✅ Valid action in entry for vehicle 2: pickup
+✅ Valid location in entry for vehicle 2
+✅ Valid previous location in entry for vehicle 2
+✅ Vehicle 2: Valid ready_time for pickup at req 5 (expected 572.8103, got 572.8103)
+✅ Vehicle 2: Valid travel_time for pickup at req 5 (expected 225.6808, got 225.6808)
+✅ Vehicle 2: Match arrival_time for pickup (expected 798.4911, got 798.4911)
+✅ Vehicle 2: Valid req_id 5
+✅ Vehicle 2: No time window violation for req 5 (service_start 798.4911, window (618.4848366972061, 978.4848366972061))
+✅ Vehicle 2: No capacity violation for req 5 (remaining 2.2700, demand 0.6731)
+✅ Vehicle 2: Can serve req 5
+✅ Vehicle 2: State match for busy_until
+✅ Vehicle 2: State match for remaining_capacity
+✅ Vehicle 2: State match for remaining_range
+✅ Valid action in entry for vehicle 2: return_depot
+✅ Valid location in entry for vehicle 2
+✅ Valid previous location in entry for vehicle 2
+✅ Vehicle 2: Valid ready_time for return_depot at req None (expected 798.4911, got 798.4911)
+✅ Vehicle 2: Valid travel_time for return_depot at req None (expected 225.6808, got 225.6808)
+✅ Vehicle 2: Match arrival_time for return_depot (expected 1024.1719, got 1024.1719)
+✅ Vehicle 2: No l_w violation for req 5 (time 225.6808, l_w 3600.0000)
+✅ Vehicle 2: State match for remaining_capacity
+✅ Vehicle 2: State match for busy_until
+✅ Vehicle 2: State match for remaining_range
+✅ Vehicle 2: Makespan does not exceed depot close time
+==================== Overall Checks ====================
+✅ Match served count (validated 5, reported 5)
+✅ Match unserved count (validated 1, reported 1)
+✅ Match makespan (validated 1058.9579, reported 1058.9579)
