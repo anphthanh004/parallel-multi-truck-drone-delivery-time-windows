@@ -213,6 +213,8 @@ def run_gphh_evolution(
     # best_f2 = min(first_front, key=lambda x: x.f2).f2
     best_f1 = max(first_front, key=lambda x: x.f1).f1
     best_f2 = max(first_front, key=lambda x: x.f2).f2
+    denom_f1 = best_f1 if best_f1 > 1e-9 else 1.0
+    denom_f2 = best_f2 if best_f2 > 1e-9 else 1.0
     
     # return current_pop, first_front, stats_history
     
@@ -221,7 +223,10 @@ def run_gphh_evolution(
     min_dist = float('inf')
 
     for ind in first_front:
-        dist = math.sqrt(((best_f1- ind.f1)/best_f1)**2 + ((best_f2 - ind.f2)/best_f2)**2)
+        # dist = math.sqrt(((best_f1- ind.f1)/best_f1)**2 + ((best_f2 - ind.f2)/best_f2)**2)
+        term1 = ((best_f1 - ind.f1) / denom_f1) ** 2
+        term2 = ((best_f2 - ind.f2) / denom_f2) ** 2
+        dist = math.sqrt(term1 + term2)
         if dist < min_dist:
             min_dist = dist
             best_ind = ind

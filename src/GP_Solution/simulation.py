@@ -12,15 +12,23 @@ from .gp_structure import NodeGP, Individual
 
 def simulate_policy(indi: Individual, pro: Problem, **kwargs) -> dict:
     local_pro = copy.deepcopy(pro)
+    local_pro.requests = []  # local problem không có cái nhìn toàn cảnh về các request
+    
+    for veh in local_pro.vehicles:
+        veh.req_queue = []
+    
     close_time = local_pro.depot_time_window[1]
     assignment_n = kwargs.get("assignment_n", 1)
     time_slot = kwargs.get("time_slot", 0)
     
     event_queue = []
-    for req in local_pro.requests:
+    # for req in local_pro.requests:
+    for req in pro.requests:
         heapq.heappush(event_queue, (req.release_time, "ARRIVE", req.id))
     heapq.heappush(event_queue, (close_time + 1e-9, "END", None))
 
+    source_requests_map = {r.id: r for r in pro.requests}
+    
     cur_time = 0.0
 
     while event_queue:
@@ -29,10 +37,18 @@ def simulate_policy(indi: Individual, pro: Problem, **kwargs) -> dict:
         if ev_type == "END":
             break
         if ev_type == "ARRIVE":
-            req = next((r for r in local_pro.requests if r.id == payload), None)
-            if not req or req.is_picked_up or req.is_served or cur_time > req.time_window[1] + 1e-6:
+            req_id = payload
+            source_req = source_requests_map.get(req_id)
+            if not source_req:
                 continue
-
+            
+            req = copy.deepcopy(source_req)
+            local_pro.requests.append(req)
+            
+            # Logic kiểm tra cơ bản (nếu dữ liệu lỗi time window từ đầu)
+            if req.time_window[1] < cur_time:
+                continue
+            
             candidates = []
             for veh in local_pro.vehicles:
                 veh.req_queue = [rq for rq in veh.req_queue if (not rq.is_picked_up) and (not rq.is_served)]
@@ -90,6 +106,7 @@ def simulate_policy(indi: Individual, pro: Problem, **kwargs) -> dict:
                 veh.req_queue = [rq for rq in veh.req_queue if (not rq.is_picked_up) and (not rq.is_served)]
                 _dispatch_vehicle(veh, indi, local_pro, cur_time, event_queue)
 
+        # Trigger kiểm tra định kỳ cho các xe rảnh (đề phòng trôi sự kiện)
         for veh in local_pro.vehicles:
             veh.req_queue = [rq for rq in veh.req_queue if (not rq.is_picked_up) and (not rq.is_served)]
             if abs(veh.busy_until - cur_time) < 1e-6:
