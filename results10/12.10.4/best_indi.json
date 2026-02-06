@@ -1,0 +1,320 @@
+{
+    "execution_time": 5.462881326675415,
+    "served": 8,
+    "dropped": 4,
+    "makespan": 1664.6980392761077,
+    "routing_tree": "(add RT3 RT1)",
+    "sequencing_tree": "(min ST0 ST2)",
+    "vehicles": [
+        {
+            "id": 1,
+            "type": "TRUCK",
+            "routes": [
+                [
+                    {
+                        "action": "pickup",
+                        "req_id": 10,
+                        "ready_time": 0.0,
+                        "travel_time": 283.80229634692193,
+                        "arrival_time": 283.80229634692193,
+                        "service_start": 283.80229634692193,
+                        "location": [
+                            382.279345430082,
+                            -4423.998516350339
+                        ],
+                        "prev_location": [
+                            0.0,
+                            0.0
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 283.80229634692193,
+                            "remaining_capacity": 399.37644858137475,
+                            "remaining_range": null
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "pickup",
+                        "req_id": 9,
+                        "ready_time": 283.80229634692193,
+                        "travel_time": 204.41733254830254,
+                        "arrival_time": 488.21962889522445,
+                        "service_start": 488.21962889522445,
+                        "location": [
+                            2343.1665085721193,
+                            -6950.785876025881
+                        ],
+                        "prev_location": [
+                            382.279345430082,
+                            -4423.998516350339
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 488.21962889522445,
+                            "remaining_capacity": 398.3752298716594,
+                            "remaining_range": null
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "return_depot",
+                        "req_id": null,
+                        "ready_time": 488.21962889522445,
+                        "travel_time": 468.8050294994625,
+                        "arrival_time": 957.0246583946869,
+                        "service_start": null,
+                        "location": [
+                            0.0,
+                            0.0
+                        ],
+                        "prev_location": [
+                            2343.1665085721193,
+                            -6950.785876025881
+                        ],
+                        "vehicle_state": {
+                            "remaining_capacity": 400.0,
+                            "busy_until": 957.0246583946869,
+                            "remaining_range": null
+                        },
+                        "note": null
+                    }
+                ],
+                [
+                    {
+                        "action": "pickup",
+                        "req_id": 12,
+                        "ready_time": 1072.0877665326348,
+                        "travel_time": 268.5128913421302,
+                        "arrival_time": 1340.600657874765,
+                        "service_start": 1340.600657874765,
+                        "location": [
+                            3169.1964826221865,
+                            -2758.0391781838825
+                        ],
+                        "prev_location": [
+                            0.0,
+                            0.0
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 1340.600657874765,
+                            "remaining_capacity": 387.2156672540602,
+                            "remaining_range": null
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "return_depot",
+                        "req_id": null,
+                        "ready_time": 1340.600657874765,
+                        "travel_time": 268.5128913421302,
+                        "arrival_time": 1609.113549216895,
+                        "service_start": null,
+                        "location": [
+                            0.0,
+                            0.0
+                        ],
+                        "prev_location": [
+                            3169.1964826221865,
+                            -2758.0391781838825
+                        ],
+                        "vehicle_state": {
+                            "remaining_capacity": 400.0,
+                            "busy_until": 1609.113549216895,
+                            "remaining_range": null
+                        },
+                        "note": null
+                    }
+                ]
+            ],
+            "makespan": 1609.113549216895
+        },
+        {
+            "id": 2,
+            "type": "DRONE",
+            "routes": [
+                [
+                    {
+                        "action": "pickup",
+                        "req_id": 5,
+                        "ready_time": 0.0,
+                        "travel_time": 318.3836672093505,
+                        "arrival_time": 318.3836672093505,
+                        "service_start": 318.3836672093505,
+                        "location": [
+                            -6631.942089694278,
+                            -7435.121582213587
+                        ],
+                        "prev_location": [
+                            0.0,
+                            0.0
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 318.3836672093505,
+                            "remaining_capacity": 0.27575262905836273,
+                            "remaining_range": 381.6163327906495
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "pickup",
+                        "req_id": 4,
+                        "ready_time": 318.3836672093505,
+                        "travel_time": 90.76496113457166,
+                        "arrival_time": 409.14862834392216,
+                        "service_start": 409.14862834392216,
+                        "location": [
+                            -6891.468711440822,
+                            -4606.713559478366
+                        ],
+                        "prev_location": [
+                            -6631.942089694278,
+                            -7435.121582213587
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 409.14862834392216,
+                            "remaining_capacity": 0.25558833277570725,
+                            "remaining_range": 290.85137165607784
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "return_depot",
+                        "req_id": null,
+                        "ready_time": 409.14862834392216,
+                        "travel_time": 264.8979927363872,
+                        "arrival_time": 674.0466210803094,
+                        "service_start": null,
+                        "location": [
+                            0.0,
+                            0.0
+                        ],
+                        "prev_location": [
+                            -6891.468711440822,
+                            -4606.713559478366
+                        ],
+                        "vehicle_state": {
+                            "remaining_capacity": 2.27,
+                            "busy_until": 674.0466210803094,
+                            "remaining_range": 700.0
+                        },
+                        "note": null
+                    }
+                ],
+                [
+                    {
+                        "action": "pickup",
+                        "req_id": 7,
+                        "ready_time": 674.0466210803094,
+                        "travel_time": 209.274381266749,
+                        "arrival_time": 883.3210023470583,
+                        "service_start": 883.3210023470583,
+                        "location": [
+                            6429.8954642626695,
+                            1242.1681025152866
+                        ],
+                        "prev_location": [
+                            0.0,
+                            0.0
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 883.3210023470583,
+                            "remaining_capacity": 1.6088059682612958,
+                            "remaining_range": 490.725618733251
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "pickup",
+                        "req_id": 8,
+                        "ready_time": 883.3210023470583,
+                        "travel_time": 178.7848502692227,
+                        "arrival_time": 1062.105852616281,
+                        "service_start": 1062.105852616281,
+                        "location": [
+                            7970.496112598523,
+                            -4136.212495777954
+                        ],
+                        "prev_location": [
+                            6429.8954642626695,
+                            1242.1681025152866
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 1062.105852616281,
+                            "remaining_capacity": 0.864738938171142,
+                            "remaining_range": 311.94076846402834
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "return_depot",
+                        "req_id": null,
+                        "ready_time": 1062.105852616281,
+                        "travel_time": 286.96103083432706,
+                        "arrival_time": 1349.0668834506082,
+                        "service_start": null,
+                        "location": [
+                            0.0,
+                            0.0
+                        ],
+                        "prev_location": [
+                            7970.496112598523,
+                            -4136.212495777954
+                        ],
+                        "vehicle_state": {
+                            "remaining_capacity": 2.27,
+                            "busy_until": 1349.0668834506082,
+                            "remaining_range": 700.0
+                        },
+                        "note": null
+                    }
+                ],
+                [
+                    {
+                        "action": "pickup",
+                        "req_id": 3,
+                        "ready_time": 1381.2049825029956,
+                        "travel_time": 141.746528386556,
+                        "arrival_time": 1522.9515108895516,
+                        "service_start": 1522.9515108895516,
+                        "location": [
+                            -4433.389024228097,
+                            -141.47472941621595
+                        ],
+                        "prev_location": [
+                            0.0,
+                            0.0
+                        ],
+                        "vehicle_state": {
+                            "busy_until": 1522.9515108895516,
+                            "remaining_capacity": 1.430907782901615,
+                            "remaining_range": 558.2534716134439
+                        },
+                        "note": null
+                    },
+                    {
+                        "action": "return_depot",
+                        "req_id": null,
+                        "ready_time": 1522.9515108895516,
+                        "travel_time": 141.746528386556,
+                        "arrival_time": 1664.6980392761077,
+                        "service_start": null,
+                        "location": [
+                            0.0,
+                            0.0
+                        ],
+                        "prev_location": [
+                            -4433.389024228097,
+                            -141.47472941621595
+                        ],
+                        "vehicle_state": {
+                            "remaining_capacity": 2.27,
+                            "busy_until": 1664.6980392761077,
+                            "remaining_range": 700.0
+                        },
+                        "note": null
+                    }
+                ]
+            ],
+            "makespan": 1664.6980392761077
+        }
+    ]
+}

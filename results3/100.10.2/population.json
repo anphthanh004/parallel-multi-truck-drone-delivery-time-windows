@@ -1,0 +1,565 @@
+{
+    "pareto_count": 80,
+    "individuals": [
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max (max RT4 RT5) RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "(add ST2 ST4)",
+            "served_ratio": 0.6,
+            "makespan_score": 0.43839433555133056,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "(add ST2 (min ST4 (sub ST5 ST3)))",
+            "served_ratio": 0.6,
+            "makespan_score": 0.43839433555133056,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max (max RT4 RT5) RT5) RT5)",
+            "s_tree": "(min (min ST4 ST1) (div (mul ST2 ST2) ST5))",
+            "served_ratio": 0.74,
+            "makespan_score": 0.4375520540321275,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT2 (add RT0 (max RT3 RT5)))",
+            "s_tree": "(min ST4 (min ST4 (min ST1 ST1)))",
+            "served_ratio": 0.79,
+            "makespan_score": 0.42885049731856006,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT2 (add RT0 (max RT3 RT5)))",
+            "s_tree": "(min ST4 (min ST4 (min ST4 ST1)))",
+            "served_ratio": 0.79,
+            "makespan_score": 0.42885049731856006,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max (max RT4 RT5) RT5) RT5)",
+            "s_tree": "(min (min ST4 ST1) (div (mul ST2 ST2) ST5))",
+            "served_ratio": 0.74,
+            "makespan_score": 0.4375520540321275,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 (max RT4 RT5)))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max (max RT4 (max RT5 RT5)) RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST4)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST4) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min ST4 ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST4) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min ST4 ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST4) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST4)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min ST4 (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST4)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min ST4 ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 (max RT4 RT5)))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max (max RT4 RT5) RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 (max RT5 RT5)) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min ST4 (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST4) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max (max RT4 RT5) RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min ST4 ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min ST4 ST1) (min (sub ST2 (sub ST5 ST1)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST4) (min (sub ST2 (sub ST5 ST4)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min ST4 ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max (max RT4 RT5) RT5) (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 RT5) (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST4) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min ST4 ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 (max RT4 RT5)))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max RT4 (max RT4 RT5)) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST4))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 (max RT4 RT5))",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max RT4 RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        },
+        {
+            "r_tree": "(max (max (max RT4 RT5) RT5) RT5)",
+            "s_tree": "(min (min (min ST4 ST1) ST1) (min (sub ST2 (sub ST5 ST3)) ST1))",
+            "served_ratio": 0.84,
+            "makespan_score": 0.4268177806859146,
+            "rank": 0
+        }
+    ]
+}

@@ -8,7 +8,7 @@ from argparse import ArgumentParser
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from GP_Solution.problem_structures import Problem, Vehicle, Request
-from GP_Solution.load_data import load_data 
+# from draft.load_data import load_data 
 
 def validate_solution(instance: str) -> dict:
     """
@@ -16,9 +16,9 @@ def validate_solution(instance: str) -> dict:
     :return: Dict gồm 'valid' (bool), 'errors' (list các str), 'log' (list các str).
     """
  
-    original_data_path = f"../../data/WithTimeWindows3/{instance}.json"
-    results_json_path = f"../../results2/without_time_slot/{instance}/best_indi.json"
-    pro = load_data(original_data_path)
+    original_data_path = f"../../data/WithTimeWindows/{instance}.json"
+    results_json_path = f"../../results/{instance}/best_indi.json"
+    pro = Problem.load_from_file(original_data_path)
 
     # Lấy kết quả log 
     with open(results_json_path, 'r') as f:

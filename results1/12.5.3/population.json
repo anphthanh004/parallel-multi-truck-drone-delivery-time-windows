@@ -1,0 +1,355 @@
+{
+    "pareto_count": 50,
+    "individuals": [
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST2",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        },
+        {
+            "r_tree": "RT3",
+            "s_tree": "ST5",
+            "served_ratio": 0.9166666666666666,
+            "makespan_score": 0.3643781136870141,
+            "rank": 0
+        }
+    ]
+}

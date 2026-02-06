@@ -1,0 +1,47 @@
+0.0000: ARRIVE req 1 at location (3712.7319634890814, 4009.9860910708107), time_window (169.27075967163222, 529.2707596716323)
+0.0000: ASSIGN req 1 to veh 2 (score 0.92)
+0.0000: DISPATCH veh 2 from (0.0, 0.0) (busy_until 0.0000)
+174.6354: PICKUP req 1 by veh 2 at (3712.7319634890814, 4009.9860910708107), arrival 174.6354
+0.0000: NO_SEQ_CANDIDATES for veh 1: no feasible req in queue
+0.0000: ARRIVE req 3 at location (-6707.411802495408, 6900.014235161928), time_window (127.5105779015841, 487.5105779015841)
+0.0000: NO_SEQ_CANDIDATES for veh 1: no feasible req in queue
+174.6354: VEH_FREE veh 2
+349.2708: RETURN_DEPOT veh 2, serve 1 orders
+349.2708: ARRIVE req 5 at location (4356.431134037283, -4506.99022512367), time_window (715.1641629466787, 1075.1641629466787)
+349.2708: ASSIGN req 5 to veh 1 (score 0.81)
+349.2708: DISPATCH veh 1 from (0.0, 0.0) (busy_until 0.0000)
+749.8926: PICKUP req 5 by veh 1 at (4356.431134037283, -4506.99022512367), arrival 749.8926
+349.2708: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+349.2708: VEH_FREE veh 2
+349.2708: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+349.2708: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+615.0212: ARRIVE req 4 at location (1431.7943220346929, -434.9304563490527), time_window (482.8403185714575, 842.8403185714575)
+615.0212: ASSIGN req 4 to veh 2 (score 0.68)
+615.0212: DISPATCH veh 2 from (0.0, 0.0) (busy_until 349.2708)
+662.8403: PICKUP req 4 by veh 2 at (1431.7943220346929, -434.9304563490527), arrival 662.8403
+662.8403: ARRIVE req 2 at location (3350.278270965108, -2383.1947174269253), time_window (570.2177654375784, 930.2177654375784)
+662.8403: ASSIGN req 2 to veh 1 (score 0.93)
+710.6595: RETURN_DEPOT veh 2, serve 1 orders
+662.8403: VEH_FREE veh 2
+710.6595: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+710.6595: VEH_FREE veh 2
+710.6595: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+710.6595: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+749.8926: VEH_FREE veh 1
+749.8926: DISPATCH veh 1 from (4356.431134037283, -4506.99022512367) (busy_until 749.8926)
+900.0917: PICKUP req 2 by veh 1 at (3350.278270965108, -2383.1947174269253), arrival 900.0917
+750.2178: ARRIVE req 6 at location (-6382.668474630001, -946.0081086742612), time_window (884.618634204812, 1244.618634204812)
+750.2178: ASSIGN req 6 to veh 2 (score 0.52)
+750.2178: DISPATCH veh 2 from (0.0, 0.0) (busy_until 710.6595)
+956.4120: PICKUP req 6 by veh 2 at (-6382.668474630001, -946.0081086742612), arrival 956.4120
+900.0917: VEH_FREE veh 1
+1162.8643: RETURN_DEPOT veh 1, serve 2 orders
+956.4120: VEH_FREE veh 2
+1162.6062: RETURN_DEPOT veh 2, serve 1 orders
+1162.6062: VEH_FREE veh 2
+1162.6062: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+1162.6062: NO_SEQ_CANDIDATES for veh 2: no feasible req in queue
+1162.8643: VEH_FREE veh 1
+1162.8643: NO_SEQ_CANDIDATES for veh 1: no feasible req in queue
+1162.8643: NO_SEQ_CANDIDATES for veh 1: no feasible req in queue
+END: Served 5/6, Unserved: [3], Makespan: 1162.86

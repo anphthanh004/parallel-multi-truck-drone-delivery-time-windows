@@ -1,58 +1,41 @@
 project: 
   file:
     - main.py
-  config:
-    - 6.5.1.yaml
-    - 6.5.2.yaml
-    - ...
+    - config.yaml
   compares:
-    - without_time_slot.csv
-    - with_time_slot.csv
+    - compares.csv
   data:
-    WithTimeWindows3:
+    WithTimeWindows:
       - 6.5.1.json
       - 6.5.2.json
       - ...
   reference_solution:
-    WithTimeWindows3:
+    WithTimeWindows:
       - 6.5.1.json
       - 6.5.1.json.result.jsonc
       - 6.5.2.json
       - 6.5.2.json.result.jsonc      
   results:
     file:
+      - benchmark.json
       - reference_solution.json
-    with_time_slot:
-    without_time_slot:
-      6.5.1:
-        - best_indi.json
-        - generations.json
-      6.5.2:
-        - best_indi.json
-        - generations.json
-      ...:
-  results2:
-    with_time_slot:
-    without_time_slot:
-      6.5.1:
-        - best_indi.json
-        - generations.json
-        - last_config.yaml
-      6.5.2:
-        - best_indi.json
-        - generations.json
-        - last_config.yaml
-      ...:
+    6.5.1:
+      - best_indi.json
+      - generations.json
+    6.5.2:
+      - best_indi.json
+      - generations.json
+    ...:
   src:
     GP_Solution:
       - gp_operators.py
       - gp_structure.py
-      - initalization.py
-      - load_data.py
-      - nsga2_algorithm.py
+      - initalizer.py
+      - nsga2_optimizer.py
       - problem_structures.py
-      - simulation.py
+      - simulator.py
     utils:
+      - plot.py
       - read_jsonc.py
       - results_handler.py
       - validator.py

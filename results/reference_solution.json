@@ -1,87 +1,87 @@
 {
   "6.5.1": {
     "total": 6,
-    "served_benchmark": 6,
-    "dropped_benchmark": 0,
-    "makespan_benchmark": 718.0927
+    "served_benchmark": 5,
+    "dropped_benchmark": 1,
+    "makespan_benchmark": 699.66565
   },
   "6.5.2": {
     "total": 6,
     "served_benchmark": 6,
     "dropped_benchmark": 0,
-    "makespan_benchmark": 550.7224
+    "makespan_benchmark": 581.99146
   },
   "6.5.3": {
     "total": 6,
-    "served_benchmark": 6,
-    "dropped_benchmark": 0,
-    "makespan_benchmark": 873.12744
+    "served_benchmark": 5,
+    "dropped_benchmark": 1,
+    "makespan_benchmark": 766.7834
   },
   "6.5.4": {
     "total": 6,
     "served_benchmark": 5,
     "dropped_benchmark": 1,
-    "makespan_benchmark": 653.4117
+    "makespan_benchmark": 579.9713
   },
   "6.10.1": {
     "total": 6,
-    "served_benchmark": 5,
-    "dropped_benchmark": 1,
-    "makespan_benchmark": 1078.7477
+    "served_benchmark": 4,
+    "dropped_benchmark": 2,
+    "makespan_benchmark": 1058.924
   },
   "6.10.2": {
     "total": 6,
     "served_benchmark": 5,
     "dropped_benchmark": 1,
-    "makespan_benchmark": 1246.0215
+    "makespan_benchmark": 1232.5642
   },
   "6.10.3": {
     "total": 6,
-    "served_benchmark": 5,
-    "dropped_benchmark": 1,
+    "served_benchmark": 3,
+    "dropped_benchmark": 3,
     "makespan_benchmark": 1295.786
   },
   "6.10.4": {
     "total": 6,
-    "served_benchmark": 6,
-    "dropped_benchmark": 0,
-    "makespan_benchmark": 1273.3441
+    "served_benchmark": 5,
+    "dropped_benchmark": 1,
+    "makespan_benchmark": 1160.2155
   },
   "6.20.1": {
     "total": 6,
-    "served_benchmark": 5,
-    "dropped_benchmark": 1,
-    "makespan_benchmark": 3931.9158
+    "served_benchmark": 6,
+    "dropped_benchmark": 0,
+    "makespan_benchmark": 4486.6816
   },
   "6.20.2": {
     "total": 6,
-    "served_benchmark": 6,
-    "dropped_benchmark": 0,
+    "served_benchmark": 4,
+    "dropped_benchmark": 2,
     "makespan_benchmark": 4099.7876
   },
   "6.20.3": {
     "total": 6,
-    "served_benchmark": 5,
-    "dropped_benchmark": 1,
-    "makespan_benchmark": 5802.0347
+    "served_benchmark": 4,
+    "dropped_benchmark": 2,
+    "makespan_benchmark": 3960.6887
   },
   "6.20.4": {
     "total": 6,
-    "served_benchmark": 5,
-    "dropped_benchmark": 1,
-    "makespan_benchmark": 5985.211
+    "served_benchmark": 3,
+    "dropped_benchmark": 3,
+    "makespan_benchmark": 4245.0356
   },
   "10.5.1": {
     "total": 10,
-    "served_benchmark": 7,
-    "dropped_benchmark": 3,
-    "makespan_benchmark": 906.6182
+    "served_benchmark": 6,
+    "dropped_benchmark": 4,
+    "makespan_benchmark": 830.3463
   },
   "10.5.2": {
     "total": 10,
-    "served_benchmark": 10,
-    "dropped_benchmark": 0,
-    "makespan_benchmark": 793.1257
+    "served_benchmark": 9,
+    "dropped_benchmark": 1,
+    "makespan_benchmark": 709.2038
   },
   "10.5.3": {
     "total": 10,
@@ -91,320 +91,320 @@
   },
   "10.5.4": {
     "total": 10,
-    "served_benchmark": 8,
-    "dropped_benchmark": 2,
-    "makespan_benchmark": 603.8297
+    "served_benchmark": 6,
+    "dropped_benchmark": 4,
+    "makespan_benchmark": 801.3366
   },
   "10.10.1": {
     "total": 10,
-    "served_benchmark": 6,
-    "dropped_benchmark": 4,
+    "served_benchmark": 8,
+    "dropped_benchmark": 2,
     "makespan_benchmark": 1735.9501
   },
   "10.10.2": {
     "total": 10,
-    "served_benchmark": 8,
-    "dropped_benchmark": 2,
-    "makespan_benchmark": 2060.5354
+    "served_benchmark": 7,
+    "dropped_benchmark": 3,
+    "makespan_benchmark": 2006.7275
   },
   "10.10.3": {
     "total": 10,
-    "served_benchmark": 8,
-    "dropped_benchmark": 2,
+    "served_benchmark": 9,
+    "dropped_benchmark": 1,
     "makespan_benchmark": 1818.1503
   },
   "10.10.4": {
     "total": 10,
-    "served_benchmark": 7,
-    "dropped_benchmark": 3,
-    "makespan_benchmark": 1418.9701
+    "served_benchmark": 6,
+    "dropped_benchmark": 4,
+    "makespan_benchmark": 1359.6333
   },
   "10.20.1": {
     "total": 10,
-    "served_benchmark": 9,
-    "dropped_benchmark": 1,
+    "served_benchmark": 8,
+    "dropped_benchmark": 2,
     "makespan_benchmark": 4891.118
   },
   "10.20.2": {
     "total": 10,
-    "served_benchmark": 9,
-    "dropped_benchmark": 1,
-    "makespan_benchmark": 6876.841
+    "served_benchmark": 4,
+    "dropped_benchmark": 6,
+    "makespan_benchmark": 2710.4375
   },
   "10.20.3": {
     "total": 10,
     "served_benchmark": 9,
     "dropped_benchmark": 1,
-    "makespan_benchmark": 6282.6943
+    "makespan_benchmark": 4978.753
   },
   "10.20.4": {
     "total": 10,
-    "served_benchmark": 9,
-    "dropped_benchmark": 1,
-    "makespan_benchmark": 6459.9336
+    "served_benchmark": 4,
+    "dropped_benchmark": 6,
+    "makespan_benchmark": 2819.61
   },
   "20.5.1": {
     "total": 20,
-    "served_benchmark": 15,
-    "dropped_benchmark": 5,
-    "makespan_benchmark": 626.00385
+    "served_benchmark": 16,
+    "dropped_benchmark": 4,
+    "makespan_benchmark": 790.4204
   },
   "20.5.2": {
     "total": 20,
-    "served_benchmark": 16,
-    "dropped_benchmark": 4,
-    "makespan_benchmark": 711.96027
+    "served_benchmark": 14,
+    "dropped_benchmark": 6,
+    "makespan_benchmark": 891.007
   },
   "20.5.3": {
     "total": 20,
-    "served_benchmark": 8,
-    "dropped_benchmark": 12,
-    "makespan_benchmark": 437.34872
+    "served_benchmark": 18,
+    "dropped_benchmark": 2,
+    "makespan_benchmark": 675.3726
   },
   "20.5.4": {
     "total": 20,
-    "served_benchmark": 14,
-    "dropped_benchmark": 6,
-    "makespan_benchmark": 586.4424
+    "served_benchmark": 16,
+    "dropped_benchmark": 4,
+    "makespan_benchmark": 733.35956
   },
   "20.10.1": {
     "total": 20,
-    "served_benchmark": 11,
-    "dropped_benchmark": 9,
-    "makespan_benchmark": 1412.3893
+    "served_benchmark": 8,
+    "dropped_benchmark": 12,
+    "makespan_benchmark": 1408.6578
   },
   "20.10.2": {
     "total": 20,
-    "served_benchmark": 5,
-    "dropped_benchmark": 15,
-    "makespan_benchmark": 491.1065
+    "served_benchmark": 16,
+    "dropped_benchmark": 4,
+    "makespan_benchmark": 1429.6135
   },
   "20.10.3": {
     "total": 20,
-    "served_benchmark": 12,
-    "dropped_benchmark": 8,
-    "makespan_benchmark": 1065.182
+    "served_benchmark": 16,
+    "dropped_benchmark": 4,
+    "makespan_benchmark": 1206.1754
   },
   "20.10.4": {
     "total": 20,
-    "served_benchmark": 16,
-    "dropped_benchmark": 4,
-    "makespan_benchmark": 1116.6632
+    "served_benchmark": 17,
+    "dropped_benchmark": 3,
+    "makespan_benchmark": 1374.0431
   },
   "20.20.1": {
     "total": 20,
-    "served_benchmark": 18,
-    "dropped_benchmark": 2,
+    "served_benchmark": 15,
+    "dropped_benchmark": 5,
     "makespan_benchmark": 4375.9956
   },
   "20.20.2": {
     "total": 20,
-    "served_benchmark": 14,
-    "dropped_benchmark": 6,
+    "served_benchmark": 16,
+    "dropped_benchmark": 4,
     "makespan_benchmark": 4041.312
   },
   "20.20.3": {
     "total": 20,
-    "served_benchmark": 13,
-    "dropped_benchmark": 7,
-    "makespan_benchmark": 5430.717
+    "served_benchmark": 6,
+    "dropped_benchmark": 14,
+    "makespan_benchmark": 2977.1494
   },
   "20.20.4": {
     "total": 20,
-    "served_benchmark": 15,
-    "dropped_benchmark": 5,
+    "served_benchmark": 13,
+    "dropped_benchmark": 7,
     "makespan_benchmark": 4371.3013
   },
   "50.10.1": {
     "total": 50,
-    "served_benchmark": 30,
-    "dropped_benchmark": 20,
-    "makespan_benchmark": 1915.4321
+    "served_benchmark": 26,
+    "dropped_benchmark": 24,
+    "makespan_benchmark": 1995.6531
   },
   "50.10.2": {
     "total": 50,
-    "served_benchmark": 26,
-    "dropped_benchmark": 24,
-    "makespan_benchmark": 1541.2411
+    "served_benchmark": 28,
+    "dropped_benchmark": 22,
+    "makespan_benchmark": 1906.6198
   },
   "50.10.3": {
     "total": 50,
-    "served_benchmark": 17,
-    "dropped_benchmark": 33,
-    "makespan_benchmark": 1300.7612
+    "served_benchmark": 23,
+    "dropped_benchmark": 27,
+    "makespan_benchmark": 1617.2914
   },
   "50.10.4": {
     "total": 50,
-    "served_benchmark": 18,
-    "dropped_benchmark": 32,
-    "makespan_benchmark": 1443.8541
+    "served_benchmark": 19,
+    "dropped_benchmark": 31,
+    "makespan_benchmark": 1457.2927
   },
   "50.20.1": {
     "total": 50,
-    "served_benchmark": 26,
-    "dropped_benchmark": 24,
+    "served_benchmark": 38,
+    "dropped_benchmark": 12,
     "makespan_benchmark": 4244.8965
   },
   "50.20.2": {
     "total": 50,
-    "served_benchmark": 22,
-    "dropped_benchmark": 28,
+    "served_benchmark": 43,
+    "dropped_benchmark": 7,
     "makespan_benchmark": 4283.049
   },
   "50.20.3": {
     "total": 50,
-    "served_benchmark": 30,
-    "dropped_benchmark": 20,
-    "makespan_benchmark": 4611.1455
+    "served_benchmark": 10,
+    "dropped_benchmark": 40,
+    "makespan_benchmark": 4700.008
   },
   "50.20.4": {
     "total": 50,
-    "served_benchmark": 39,
-    "dropped_benchmark": 11,
-    "makespan_benchmark": 5416.529
+    "served_benchmark": 25,
+    "dropped_benchmark": 25,
+    "makespan_benchmark": 5324.057
   },
   "50.30.1": {
     "total": 50,
-    "served_benchmark": 13,
-    "dropped_benchmark": 37,
-    "makespan_benchmark": 8528.307
+    "served_benchmark": 30,
+    "dropped_benchmark": 20,
+    "makespan_benchmark": 8205.116
   },
   "50.30.2": {
     "total": 50,
-    "served_benchmark": 19,
-    "dropped_benchmark": 31,
-    "makespan_benchmark": 7749.057
+    "served_benchmark": 18,
+    "dropped_benchmark": 32,
+    "makespan_benchmark": 7006.082
   },
   "50.30.3": {
     "total": 50,
-    "served_benchmark": 18,
-    "dropped_benchmark": 32,
-    "makespan_benchmark": 8596.887
+    "served_benchmark": 20,
+    "dropped_benchmark": 30,
+    "makespan_benchmark": 7670.0664
   },
   "50.30.4": {
     "total": 50,
-    "served_benchmark": 10,
-    "dropped_benchmark": 40,
-    "makespan_benchmark": 8547.897
+    "served_benchmark": 21,
+    "dropped_benchmark": 29,
+    "makespan_benchmark": 7354.477
   },
   "50.40.1": {
     "total": 50,
-    "served_benchmark": 29,
-    "dropped_benchmark": 21,
-    "makespan_benchmark": 12455.692
+    "served_benchmark": 17,
+    "dropped_benchmark": 33,
+    "makespan_benchmark": 7983.461
   },
   "50.40.2": {
     "total": 50,
-    "served_benchmark": 12,
-    "dropped_benchmark": 38,
-    "makespan_benchmark": 13396.751
+    "served_benchmark": 7,
+    "dropped_benchmark": 43,
+    "makespan_benchmark": 8812.881
   },
   "50.40.3": {
     "total": 50,
-    "served_benchmark": 21,
-    "dropped_benchmark": 29,
-    "makespan_benchmark": 11929.525
+    "served_benchmark": 12,
+    "dropped_benchmark": 38,
+    "makespan_benchmark": 6960.7466
   },
   "50.40.4": {
     "total": 50,
-    "served_benchmark": 21,
-    "dropped_benchmark": 29,
-    "makespan_benchmark": 10976.179
+    "served_benchmark": 15,
+    "dropped_benchmark": 35,
+    "makespan_benchmark": 9818.705
   },
   "100.10.1": {
     "total": 100,
-    "served_benchmark": 36,
-    "dropped_benchmark": 64,
-    "makespan_benchmark": 1684.2656
+    "served_benchmark": 82,
+    "dropped_benchmark": 18,
+    "makespan_benchmark": 1964.9672
   },
   "100.10.2": {
     "total": 100,
-    "served_benchmark": 40,
-    "dropped_benchmark": 60,
-    "makespan_benchmark": 1674.1626
+    "served_benchmark": 63,
+    "dropped_benchmark": 37,
+    "makespan_benchmark": 1719.0233
   },
   "100.10.3": {
     "total": 100,
-    "served_benchmark": 39,
-    "dropped_benchmark": 61,
-    "makespan_benchmark": 1336.8809
+    "served_benchmark": 49,
+    "dropped_benchmark": 51,
+    "makespan_benchmark": 1835.8917
   },
   "100.10.4": {
     "total": 100,
-    "served_benchmark": 42,
-    "dropped_benchmark": 58,
-    "makespan_benchmark": 1650.1779
+    "served_benchmark": 49,
+    "dropped_benchmark": 51,
+    "makespan_benchmark": 1845.1735
   },
   "100.20.1": {
     "total": 100,
-    "served_benchmark": 3,
-    "dropped_benchmark": 97,
-    "makespan_benchmark": 944.9541
+    "served_benchmark": 89,
+    "dropped_benchmark": 11,
+    "makespan_benchmark": 4302.307
   },
   "100.20.2": {
     "total": 100,
-    "served_benchmark": 4,
-    "dropped_benchmark": 96,
-    "makespan_benchmark": 2152.9192
+    "served_benchmark": 62,
+    "dropped_benchmark": 38,
+    "makespan_benchmark": 4071.9429
   },
   "100.20.3": {
     "total": 100,
-    "served_benchmark": 3,
-    "dropped_benchmark": 96,
-    "makespan_benchmark": 1755.0034
+    "served_benchmark": 49,
+    "dropped_benchmark": 51,
+    "makespan_benchmark": 4877.869
   },
   "100.20.4": {
     "total": 100,
-    "served_benchmark": 47,
-    "dropped_benchmark": 53,
-    "makespan_benchmark": 4622.2495
+    "served_benchmark": 54,
+    "dropped_benchmark": 46,
+    "makespan_benchmark": 4573.8687
   },
   "100.30.1": {
     "total": 100,
-    "served_benchmark": 22,
-    "dropped_benchmark": 78,
-    "makespan_benchmark": 8716.837
+    "served_benchmark": 49,
+    "dropped_benchmark": 51,
+    "makespan_benchmark": 8599.779
   },
   "100.30.2": {
     "total": 100,
-    "served_benchmark": 9,
-    "dropped_benchmark": 91,
-    "makespan_benchmark": 2652.1746
+    "served_benchmark": 49,
+    "dropped_benchmark": 51,
+    "makespan_benchmark": 7986.162
   },
   "100.30.3": {
     "total": 100,
-    "served_benchmark": 36,
-    "dropped_benchmark": 64,
-    "makespan_benchmark": 8860.024
+    "served_benchmark": 22,
+    "dropped_benchmark": 78,
+    "makespan_benchmark": 7534.9497
   },
   "100.30.4": {
     "total": 100,
-    "served_benchmark": 4,
-    "dropped_benchmark": 96,
-    "makespan_benchmark": 2830.5806
+    "served_benchmark": 29,
+    "dropped_benchmark": 71,
+    "makespan_benchmark": 8399.545
   },
   "100.40.1": {
     "total": 100,
-    "served_benchmark": 4,
-    "dropped_benchmark": 96,
-    "makespan_benchmark": 2721.1855
+    "served_benchmark": 16,
+    "dropped_benchmark": 84,
+    "makespan_benchmark": 7945.7886
   },
   "100.40.2": {
     "total": 100,
-    "served_benchmark": 3,
-    "dropped_benchmark": 97,
-    "makespan_benchmark": 2783.8914
+    "served_benchmark": 18,
+    "dropped_benchmark": 82,
+    "makespan_benchmark": 6666.9126
   },
   "100.40.3": {
     "total": 100,
-    "served_benchmark": 7,
-    "dropped_benchmark": 93,
-    "makespan_benchmark": 3935.2297
+    "served_benchmark": 12,
+    "dropped_benchmark": 88,
+    "makespan_benchmark": 8952.168
   },
   "100.40.4": {
     "total": 100,
-    "served_benchmark": 5,
-    "dropped_benchmark": 95,
-    "makespan_benchmark": 2888.5542
+    "served_benchmark": 14,
+    "dropped_benchmark": 86,
+    "makespan_benchmark": 9220.576
   }
 }

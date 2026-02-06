@@ -38,7 +38,7 @@ def _load_jsonc(filepath: str) -> List[Dict]:
 
 def read_reference_solution() -> Dict[str, Dict[str, object]]:
     results = {}
-    reference_dir = "../../reference_solution/WithTimeWindows3"
+    reference_dir = "../../reference_solution/WithTimeWindows"
 
     for filename in os.listdir(reference_dir):
         if not filename.endswith(".json.result.jsonc"):
@@ -81,7 +81,7 @@ def version_key(s: str):
 
 def write_benchmark_json(
     benchmark_data: dict,
-    output_path: str = "../../results/benchmark.json",
+    output_path: str = "../../results3/benchmark.json",
 ):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
@@ -102,3 +102,5 @@ if __name__ == "__main__":
     print(len(result))
     write_benchmark_json(result)
     print("benchmark.json written to results !")
+    
+# python read_jsonc.py
