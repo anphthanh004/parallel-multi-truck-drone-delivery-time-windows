@@ -1,7 +1,7 @@
 import random
 from typing import Literal, Optional
 from .gp_structure import NodeGP
-from .initalizer import PopulationInitializer
+from .initializer import PopulationInitializer
 from .gp_structure import NodeGP, Individual, InternalNode, TerminalNode, OPERATORS, FUNC_SET
 
 
