@@ -7,7 +7,7 @@ from typing import Any, List, Tuple, Dict, Optional
 
 from .problem_structures import Problem
 from .gp_structure import NodeGP, Individual
-from .initalizer import PopulationInitializer
+from .initializer import PopulationInitializer
 from .simulator import Simulator
 from .gp_operators import GeneticOperator
 
@@ -17,7 +17,8 @@ class NSGA2Optimizer:
         pop_size: int = 50, 
         max_gen: int = 20, 
         c_rate: float = 0.8, 
-        m_rate: float = 0.2, 
+        m_rate: float = 0.3,    
+        elite_ratio: float = 0.1, 
         tourn_size: int = 4, 
         max_depth: int = 6,
         seed: Optional[int] = None
@@ -26,6 +27,7 @@ class NSGA2Optimizer:
         self.max_gen = max_gen
         self.c_rate = c_rate
         self.m_rate = m_rate
+        self.elite_size = int(pop_size * elite_ratio) 
         self.tourn_size = tourn_size
         self.max_depth = max_depth
         
@@ -39,7 +41,8 @@ class NSGA2Optimizer:
         assignment_n: int = 1,
     ) -> Dict[str, Any]:
         """
-        Thực thi quá trình tiến hóa GPHH sử dụng thuật toán NSGA-II.
+        Thực thi quá trình tiến hóa GPHH sử dụng thuật toán NSGA-II 
+        với cơ chế Elitism (Ưu tú hóa).
         """
         # 1. Khởi tạo quần thể ban đầu
         current_pop = PopulationInitializer.create_greedy_pop(self.pop_size, max_depth=self.max_depth - 1)
@@ -59,9 +62,16 @@ class NSGA2Optimizer:
         
         # 2. Vòng lặp tiến hóa
         for gen in range(1, self.max_gen + 1):
+            
             offspring = []
             
-            # Tạo thế hệ con
+            # --- ELITISM---
+            sorted_pop = sorted(current_pop, key=lambda x: (x.rank, -x.distance))
+            for i in range(min(self.elite_size, len(sorted_pop))):
+                elite_ind = sorted_pop[i].copy()
+                offspring.append(elite_ind)
+            
+            # ------Tạo thế hệ con--------
             while len(offspring) < self.pop_size:
                 p1 = self._tournament_selection(current_pop)
                 p2 = self._tournament_selection(current_pop)
@@ -80,12 +90,14 @@ class NSGA2Optimizer:
             
             offspring = offspring[:self.pop_size]
             
+            # Đánh giá thế hệ con
             self._evaluate_population(offspring, problem, assignment_n)
             
+            # Kết hợp Parent + Offspring để chọn lọc sinh tồn
             combined_pop = current_pop + offspring
             current_pop = self._survival_selection(combined_pop)
             
-            # Sắp xếp lại để chuẩn bị cho thế hệ sau & thống kê
+            # Sắp xếp lại để chuẩn bị cho thế hệ sau
             fronts = self._fast_non_dominated_sort(current_pop)
             for front in fronts:
                 self._assign_crowding_distance(front)
@@ -107,7 +119,6 @@ class NSGA2Optimizer:
             "best_results": best_results
         }
 
-
     def _evaluate_population(self, pop: List[Individual], problem: Problem, assignment_n: int):
         """Đánh giá fitness cho toàn bộ quần thể sử dụng Simulator."""
         for ind in pop:
@@ -125,36 +136,23 @@ class NSGA2Optimizer:
             "best_makespan_score": best_f2
         }
         history.append(stats)
-        print(f"Gen {gen:3d} | Best Served Ratio: {best_f1:.3f} | Best Makespan Score: {best_f2:.3f}")
+        print(f"Gen {gen:3d} | Served Ratio: {best_f1:.3f} | Makespan Score: {best_f2:.3f}")
 
     def _select_best_individual(self, front: List[Individual], problem: Problem, assignment_n: int):
-        """Chọn cá thể cân bằng nhất từ Pareto Front."""
+        """Chọn cá thể có f1 lớn nhất, nếu trùng thì chọn f2 lớn nhất."""
         if not front:
             return None, None
-            
-        best_f1 = max(front, key=lambda x: x.f1).f1
-        best_f2 = max(front, key=lambda x: x.f2).f2
-        denom_f1 = best_f1 if best_f1 > 1e-9 else 1.0
-        denom_f2 = best_f2 if best_f2 > 1e-9 else 1.0
-        
-        best_ind = None
-        min_dist = float('inf')
 
-        for ind in front:
-            term1 = ((best_f1 - ind.f1) / denom_f1) ** 2
-            term2 = ((best_f2 - ind.f2) / denom_f2) ** 2
-            dist = math.sqrt(term1 + term2)
-            if dist < min_dist:
-                min_dist = dist
-                best_ind = ind
+        # Chọn cá thể có (f1, f2) lớn nhất
+        best_ind = max(front, key=lambda x: (x.f1, x.f2))
 
         final_results = None
         if best_ind:
-            # Chạy lại simulation lần cuối với logging bật để lấy chi tiết
             sim = Simulator(problem, best_ind, assignment_n=assignment_n, enable_logging=True)
             final_results = sim.run()
-            
+
         return best_ind, final_results
+
 
     def _dominate(self, ind1: Individual, ind2: Individual) -> bool:
         f1_a, f2_a = ind1.fitness
@@ -197,7 +195,6 @@ class NSGA2Optimizer:
             else:
                 break
         
-        # Remove empty last front if exists
         if not fronts[-1]:
             fronts.pop()
             
@@ -212,7 +209,6 @@ class NSGA2Optimizer:
             
         # Tính cho từng mục tiêu (2 mục tiêu)
         for m in range(2):
-            # Sort theo mục tiêu m
             front.sort(key=lambda x: x.fitness[m])
             
             front[0].distance = float('inf')
@@ -248,6 +244,7 @@ class NSGA2Optimizer:
         
         for front in fronts:
             self._assign_crowding_distance(front)
+            # Sort theo distance giảm dần (càng xa càng tốt)
             front.sort(key=lambda x: x.distance, reverse=True)
             
             if len(new_pop) + len(front) <= self.pop_size:

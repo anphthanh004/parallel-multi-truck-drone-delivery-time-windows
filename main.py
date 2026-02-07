@@ -127,7 +127,7 @@ def main():
     parser.add_argument('file_name', type=str, help='Tên file yaml hoặc "all" để chạy hết')
     parser.add_argument('-rsn', '--results_number', type=int, help='Lần chạy kết quả')
     parser.add_argument('--pop_size', type=int)
-    parser.add_argument('--gen', type=int)
+    parser.add_argument('--max_gen', type=int)
     parser.add_argument('--max_depth', type=int)
     parser.add_argument('--c_rate', type=float)
     parser.add_argument('--m_rate', type=float)

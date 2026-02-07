@@ -4,6 +4,18 @@ from abc import ABC, abstractmethod
 from typing import Literal, Optional, Callable, Dict, Tuple, Any
 from .problem_structures import Vehicle, Problem, Request
 
+def protected_div(a: float, b: float) -> float:
+    return a / b if b != 0 else 1.0
+
+FUNC_SET = ['add', 'sub', 'mul', 'div', 'min', 'max']
+OPERATORS: Dict[str, Callable[[float, float], float]] = {
+    'add': lambda a, b: a + b,
+    'sub': lambda a, b: a - b,
+    'mul': lambda a, b: a * b,
+    'div': protected_div,
+    'min': min,
+    'max': max
+}
 
 
 class TerminalRegistry:
@@ -64,7 +76,8 @@ class TerminalRegistry:
             moving_time = veh.moving_time_to(req.location)
             if moving_time > time_until_close or time_until_close <= 1e-3:
                 return 1e9
-            return moving_time / time_until_close
+            # return moving_time / time_until_close
+            return max(0.0, (time_until_close - moving_time) / time_until_close)
         
         # ST3: kích thước request (demand) càng lớn càng được ưu tiên - w=0.05
         elif opt == 3:
@@ -80,19 +93,6 @@ class TerminalRegistry:
             return req.release_time / pro.depot_time_window[1]
             
         raise ValueError(f"Unknown Sequencing Terminal option: {opt}")
-
-
-def protected_div(a: float, b: float) -> float:
-    return a / b if b != 0 else 1.0
-
-OPERATORS: Dict[str, Callable[[float, float], float]] = {
-    'add': lambda a, b: a + b,
-    'sub': lambda a, b: a - b,
-    'mul': lambda a, b: a * b,
-    'div': protected_div,
-    'min': min,
-    'max': max
-}
 
 
 class NodeGP(ABC):
