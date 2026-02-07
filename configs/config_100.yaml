@@ -1,9 +1,9 @@
-pop_size: 80
-max_gen: 80
-max_depth: 5
+pop_size: 300
+max_gen: 150
+max_depth: 6
 c_rate: 0.8
-m_rate: 0.2
-tourn_size: 4
+m_rate: 0.3
+tourn_size: 2
 seed: 42
 assignment_n: 4
 
