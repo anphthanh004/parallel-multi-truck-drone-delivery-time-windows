@@ -13,11 +13,11 @@ from GP_Solution.initializer import PopulationInitializer
 from GP_Solution.simulator import Simulator
 
 
-RESULT_FOLDERS = ['results20', 'results21', 'results22', 'result23', 'result24', 'results25']
+RESULT_FOLDERS = ['results20', 'results21', 'results22', 'results23', 'results24', 'results25', 'results26', 'results27', 'results28', 'results29']
 
 BASE_DIR = os.path.dirname(src_dir) 
 DATA_DIR = os.path.join(BASE_DIR, "data", "WithTimeWindows")
-OUTPUT_BASE_DIR = os.path.join(BASE_DIR, "output")
+OUTPUT_BASE_DIR = os.path.join(BASE_DIR, "output_P.T.An_20224911")
 
 
 def ensure_dir(directory):

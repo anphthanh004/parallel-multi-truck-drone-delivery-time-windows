@@ -30,8 +30,9 @@ results26/
 results27/
 results28/
 results29/
-output_*/
-pareto/
+output_HH.Hoang_20224988/
+output_L.S.Linh_20225029/
+# pareto/
 pareto_comparison/
 summary_csv/
 report/*.docx

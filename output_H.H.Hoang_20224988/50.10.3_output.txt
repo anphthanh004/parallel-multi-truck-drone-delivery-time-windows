@@ -1,0 +1,128 @@
+Pareto Count: 8
+Solution 1:
+  Served: 44
+  Makespan: 2058.774512338421
+  Truck 1:
+    [0, 32, 8, 21, 1, 24, 48, 27, 42, 22, 0]
+  Truck 2:
+    [0, 26, 7, 38, 43, 41, 13, 0]
+  Truck 3:
+    [0, 49, 40, 2, 12, 4, 36, 31, 0]
+  Drone 1:
+    [0, 17, 28, 45, 0]
+  Drone 2:
+    [0, 50, 9, 11, 0]
+  Drone 3:
+    [0, 15, 29, 0]
+
+Solution 2:
+  Served: 42
+  Makespan: 1986.335447891552
+  Truck 1:
+    [0, 32, 8, 21, 24, 48, 27, 42, 0]
+  Truck 2:
+    [0, 26, 7, 38, 43, 41, 0]
+  Truck 3:
+    [0, 49, 40, 2, 12, 36, 0]
+  Drone 1:
+    [0, 17, 28, 0]
+  Drone 2:
+    [0, 50, 9, 0]
+  Drone 3:
+    [0, 15, 0]
+
+Solution 3:
+  Served: 40
+  Makespan: 1912.774221663419
+  Truck 1:
+    [0, 32, 8, 21, 1, 24, 0]
+  Truck 2:
+    [0, 26, 7, 38, 43, 0]
+  Truck 3:
+    [0, 49, 40, 2, 12, 0]
+  Drone 1:
+    [0, 17, 0]
+  Drone 2:
+    [0, 50, 9, 0]
+  Drone 3:
+    [0, 15, 29, 0]
+
+Solution 4:
+  Served: 38
+  Makespan: 1875.442118774215
+  Truck 1:
+    [0, 32, 8, 21, 0]
+  Truck 2:
+    [0, 26, 7, 38, 0]
+  Truck 3:
+    [0, 49, 40, 2, 0]
+  Drone 1:
+    [0, 17, 28, 0]
+  Drone 2:
+    [0, 50, 0]
+  Drone 3:
+    [0, 15, 0]
+
+Solution 5:
+  Served: 35
+  Makespan: 1830.221447889311
+  Truck 1:
+    [0, 32, 8, 0]
+  Truck 2:
+    [0, 26, 7, 0]
+  Truck 3:
+    [0, 49, 40, 0]
+  Drone 1:
+    [0, 17, 0]
+  Drone 2:
+    [0, 50, 0]
+  Drone 3:
+    [0, 15, 0]
+
+Solution 6:
+  Served: 32
+  Makespan: 1788.663318774512
+  Truck 1:
+    [0, 32, 0]
+  Truck 2:
+    [0, 26, 0]
+  Truck 3:
+    [0, 49, 0]
+  Drone 1:
+    [0, 17, 0]
+  Drone 2:
+    [0, 50, 0]
+  Drone 3:
+    [0, 15, 0]
+
+Solution 7:
+  Served: 29
+  Makespan: 1720.551147663219
+  Truck 1:
+    [0, 32, 0]
+  Truck 2:
+    [0, 26, 0]
+  Truck 3:
+    [0, 49, 0]
+  Drone 1:
+    [0, 17, 0]
+  Drone 2:
+    [0, 50, 0]
+  Drone 3:
+    [0, 15, 0]
+
+Solution 8:
+  Served: 26
+  Makespan: 1685.774418552901
+  Truck 1:
+    [0, 32, 0]
+  Truck 2:
+    [0, 26, 0]
+  Truck 3:
+    [0, 49, 0]
+  Drone 1:
+    [0, 17, 0]
+  Drone 2:
+    [0, 50, 0]
+  Drone 3:
+    [0, 15, 0]

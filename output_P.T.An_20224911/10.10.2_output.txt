@@ -1,0 +1,19 @@
+Pareto Count: 2
+Solution 1:
+    Served: 10
+    Makespan: 2060.5354029097252
+    Truck 1: 
+        [0, 4, 5, 2, 0]
+    Drone 1: 
+        [0, 1, 10, 3, 0]
+        [0, 6, 9, 8, 0]
+        [0, 7, 0]
+Solution 2:
+    Served: 7
+    Makespan: 2006.727732571811
+    Truck 1: 
+        [0, 5, 2, 0]
+    Drone 1: 
+        [0, 4, 1, 0]
+        [0, 6, 9, 0]
+        [0, 7, 0]
