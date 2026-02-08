@@ -21,9 +21,6 @@ def create_overall_summary():
             
             try:
                 df = pd.read_csv(file_path)
-                
-                # SỬA TẠI ĐÂY: Tìm dòng có cột 'source' chứa chữ 'BEST' 
-                # (Vì summarize.py của bạn đặt là "BEST (from resultsX)")
                 best_row = df[df['source'].str.contains('BEST', na=False)]
                 
                 if not best_row.empty:
