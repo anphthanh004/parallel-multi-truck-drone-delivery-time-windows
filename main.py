@@ -136,9 +136,110 @@ def get_file_key(filename):
         return [0]
 
 
+# def main():
+#     parser = argparse.ArgumentParser(description="GPHH Runner")
+#     parser.add_argument('file_name', type=str, help='Tên file yaml hoặc "all" để chạy hết')
+#     parser.add_argument('--start', type=str, help='Tên file bắt đầu (VD: 6.5.1)')
+#     parser.add_argument('--end', type=str, help='Tên file kết thúc (VD: 10.5.1)')
+#     parser.add_argument('-rsn', '--results_number', type=int, help='Lần chạy kết quả')
+#     parser.add_argument('--pop_size', type=int)
+#     parser.add_argument('--max_gen', type=int)
+#     parser.add_argument('--max_depth', type=int)
+#     parser.add_argument('--c_rate', type=float)
+#     parser.add_argument('--m_rate', type=float)
+#     parser.add_argument('--tourn_size', type=int)
+#     parser.add_argument('-asn','--assignment_n', type=int)
+#     parser.add_argument('--seed', type=int)
+
+#     args = parser.parse_args()
+
+#     # Cấu hình mặc định
+#     base_config = {
+#         'pop_size': 50,
+#         'max_gen': 80,
+#         'max_depth': 5,
+#         'c_rate': 0.8,
+#         'm_rate': 0.2,
+#         'tourn_size': 4,
+#         'seed': 42,
+#         'assignment_n': 1,
+#     }
+
+#     print("\n" + "="*50)
+#     print(f"BẮT ĐẦU CHẠY GPHH - Mode: {args.file_name.upper()}")
+#     print("="*50)
+
+#     # --- LOGIC XỬ LÝ MODE ---
+    
+#     # Mode chạy 1 file cụ thể (không phải 'all' và không phải 'range')
+#     if args.file_name.lower() not in ['all', 'range']:
+#         file_stem = args.file_name.replace('.json', '')
+#         run_single_case(file_stem, args, base_config)
+#         return
+
+#     # Mode chạy danh sách ('all' hoặc 'range')
+#     data_dir = 'data/WithTimeWindows'
+#     if not os.path.exists(data_dir):
+#         print(f"Error: Directory {data_dir} not found.")
+#         sys.exit(1)
+        
+#     # 1. Lấy và Sort file chuẩn xác (Numeric Sort)
+#     files = [f for f in os.listdir(data_dir) if f.endswith('.json')]
+#     files.sort(key=get_file_key) # Sử dụng hàm sort mới
+    
+#     # 2. Xử lý lọc danh sách file cần chạy
+#     files_to_run = []
+    
+#     if args.file_name.lower() == 'all':
+#         files_to_run = files
+        
+#     elif args.file_name.lower() == 'range':
+#         if not args.start:
+#             print("Lỗi: Mode 'range' yêu cầu tham số --start")
+#             sys.exit(1)
+            
+#         start_file = args.start if args.start.endswith('.json') else f"{args.start}.json"
+#         end_file = (args.end if args.end.endswith('.json') else f"{args.end}.json") if args.end else None
+        
+#         # Kiểm tra file start có tồn tại không
+#         if start_file not in files:
+#             print(f"Lỗi: Không tìm thấy file bắt đầu '{start_file}' trong data.")
+#             # Gợi ý file gần đúng nếu cần, hoặc in list file đầu
+#             print(f"File đầu tiên có sẵn: {files[0]}")
+#             sys.exit(1)
+
+#         start_idx = files.index(start_file)
+#         end_idx = len(files) # Mặc định chạy đến hết
+
+#         if end_file:
+#             if end_file not in files:
+#                 print(f"Lỗi: Không tìm thấy file kết thúc '{end_file}'")
+#                 sys.exit(1)
+#             # +1 để bao gồm cả file end
+#             end_idx = files.index(end_file) + 1 
+            
+#             if end_idx <= start_idx:
+#                 print("Lỗi: File kết thúc phải nằm sau file bắt đầu.")
+#                 sys.exit(1)
+
+#         files_to_run = files[start_idx:end_idx]
+
+#     print(f"Đã tìm thấy {len(files_to_run)} file phù hợp để chạy.")
+    
+#     # 3. Vòng lặp chạy thực nghiệm
+#     for idx, f in enumerate(files_to_run):
+#         file_stem = f.replace('.json', '')
+#         print(f"\n[{idx+1}/{len(files_to_run)}] Running {file_stem}...")
+#         run_single_case(file_stem, args, base_config)
+
+# if __name__ == "__main__":
+#     main()
+
 def main():
     parser = argparse.ArgumentParser(description="GPHH Runner")
-    parser.add_argument('file_name', type=str, help='Tên file yaml hoặc "all" để chạy hết')
+    # nargs='+' để nhận 1 hoặc nhiều tên file
+    parser.add_argument('file_names', nargs='+', help='Danh sách tên file, hoặc "all", hoặc "range"')
+    
     parser.add_argument('--start', type=str, help='Tên file bắt đầu (VD: 6.5.1)')
     parser.add_argument('--end', type=str, help='Tên file kết thúc (VD: 10.5.1)')
     parser.add_argument('-rsn', '--results_number', type=int, help='Lần chạy kết quả')
@@ -164,77 +265,82 @@ def main():
         'seed': 42,
         'assignment_n': 1,
     }
+    
+    # Lấy mode từ phần tử đầu tiên của list inputs
+    # Ví dụ: python main.py all -> mode = 'all'
+    # Ví dụ: python main.py 6.10.1 6.10.2 -> mode = '6.10.1'
+    first_arg = args.file_names[0].lower()
 
     print("\n" + "="*50)
-    print(f"BẮT ĐẦU CHẠY GPHH - Mode: {args.file_name.upper()}")
+    print(f"BẮT ĐẦU CHẠY GPHH - Input: {args.file_names}")
     print("="*50)
 
-    # --- LOGIC XỬ LÝ MODE ---
-    
-    # Mode chạy 1 file cụ thể (không phải 'all' và không phải 'range')
-    if args.file_name.lower() not in ['all', 'range']:
-        file_stem = args.file_name.replace('.json', '')
-        run_single_case(file_stem, args, base_config)
-        return
-
-    # Mode chạy danh sách ('all' hoặc 'range')
     data_dir = 'data/WithTimeWindows'
-    if not os.path.exists(data_dir):
-        print(f"Error: Directory {data_dir} not found.")
-        sys.exit(1)
-        
-    # 1. Lấy và Sort file chuẩn xác (Numeric Sort)
-    files = [f for f in os.listdir(data_dir) if f.endswith('.json')]
-    files.sort(key=get_file_key) # Sử dụng hàm sort mới
-    
-    # 2. Xử lý lọc danh sách file cần chạy
     files_to_run = []
     
-    if args.file_name.lower() == 'all':
-        files_to_run = files
-        
-    elif args.file_name.lower() == 'range':
-        if not args.start:
-            print("Lỗi: Mode 'range' yêu cầu tham số --start")
+    # --- LOGIC XỬ LÝ MODE ---
+
+    # MODE 1: ALL hoặc RANGE
+    if first_arg in ['all', 'range']:
+        if not os.path.exists(data_dir):
+            print(f"Error: Directory {data_dir} not found.")
             sys.exit(1)
             
-        start_file = args.start if args.start.endswith('.json') else f"{args.start}.json"
-        end_file = (args.end if args.end.endswith('.json') else f"{args.end}.json") if args.end else None
-        
-        # Kiểm tra file start có tồn tại không
-        if start_file not in files:
-            print(f"Lỗi: Không tìm thấy file bắt đầu '{start_file}' trong data.")
-            # Gợi ý file gần đúng nếu cần, hoặc in list file đầu
-            print(f"File đầu tiên có sẵn: {files[0]}")
-            sys.exit(1)
+        all_files = [f for f in os.listdir(data_dir) if f.endswith('.json')]
+        all_files.sort(key=get_file_key) 
 
-        start_idx = files.index(start_file)
-        end_idx = len(files) # Mặc định chạy đến hết
-
-        if end_file:
-            if end_file not in files:
-                print(f"Lỗi: Không tìm thấy file kết thúc '{end_file}'")
-                sys.exit(1)
-            # +1 để bao gồm cả file end
-            end_idx = files.index(end_file) + 1 
+        if first_arg == 'all':
+            files_to_run = all_files
             
-            if end_idx <= start_idx:
-                print("Lỗi: File kết thúc phải nằm sau file bắt đầu.")
+        elif first_arg == 'range':
+            if not args.start:
+                print("Lỗi: Mode 'range' yêu cầu tham số --start")
+                sys.exit(1)
+                
+            start_file = args.start if args.start.endswith('.json') else f"{args.start}.json"
+            end_file = (args.end if args.end.endswith('.json') else f"{args.end}.json") if args.end else None
+            
+            if start_file not in all_files:
+                print(f"Lỗi: Không tìm thấy file bắt đầu '{start_file}'")
                 sys.exit(1)
 
-        files_to_run = files[start_idx:end_idx]
+            start_idx = all_files.index(start_file)
+            end_idx = len(all_files) 
+
+            if end_file:
+                if end_file not in all_files:
+                    print(f"Lỗi: Không tìm thấy file kết thúc '{end_file}'")
+                    sys.exit(1)
+                end_idx = all_files.index(end_file) + 1 
+                
+                if end_idx <= start_idx:
+                    print("Lỗi: File kết thúc phải nằm sau file bắt đầu.")
+                    sys.exit(1)
+
+            files_to_run = all_files[start_idx:end_idx]
+
+    # MODE 2: CUSTOM LIST (Nhập trực tiếp danh sách file)
+    else:
+        files_to_run = args.file_names
 
     print(f"Đã tìm thấy {len(files_to_run)} file phù hợp để chạy.")
     
-    # 3. Vòng lặp chạy thực nghiệm
     for idx, f in enumerate(files_to_run):
         file_stem = f.replace('.json', '')
+        
+        full_path = os.path.join(data_dir, f"{file_stem}.json")
+        if not os.path.exists(full_path):
+             print(f"\n[WARNING] Không tìm thấy file: {full_path}. Bỏ qua.")
+             continue
+
         print(f"\n[{idx+1}/{len(files_to_run)}] Running {file_stem}...")
+        
         run_single_case(file_stem, args, base_config)
 
 if __name__ == "__main__":
     main()
-    
+
+
 # chạy 1 file: python main.py 6.10.1 -rsn 1
 # chạy toàn bộ file: python main.py all -rsn 1
 # chạy toàn bộ nhưng override tham số: python main.py all -rsn 2 --gen 200

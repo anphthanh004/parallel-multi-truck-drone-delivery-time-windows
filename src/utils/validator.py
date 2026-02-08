@@ -17,7 +17,7 @@ def validate_solution(instance: str) -> dict:
     """
  
     original_data_path = f"../../data/WithTimeWindows/{instance}.json"
-    results_json_path = f"../../results/{instance}/best_indi.json"
+    results_json_path = f"../../results20/{instance}/best_indi.json"
     pro = Problem.load_from_file(original_data_path)
 
     # Lấy kết quả log 
